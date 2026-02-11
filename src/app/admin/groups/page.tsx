@@ -34,10 +34,10 @@ export default function AdminGroupsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Groups</h1>
-          <p className="text-muted-foreground">Manage all susu groups</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">Groups</h1>
+          <p className="text-sm text-muted-foreground">Manage all susu groups</p>
         </div>
         <CreateGroupDialog open={open} onOpenChange={setOpen} />
       </div>
@@ -231,7 +231,7 @@ function CreateGroupDialog({
           <Plus className="h-4 w-4" /> Create Group
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-lg">
+      <DialogContent className="max-w-[95vw] sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>Create New Group</DialogTitle>
           <DialogDescription>
@@ -252,7 +252,7 @@ function CreateGroupDialog({
               />
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="grid gap-2">
                 <label htmlFor="type" className="text-sm font-medium">Type</label>
                 <select
@@ -281,7 +281,7 @@ function CreateGroupDialog({
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="grid gap-2">
                 <label htmlFor="daily_amount" className="text-sm font-medium">Daily Contribution (GHS)</label>
                 <Input
@@ -309,7 +309,7 @@ function CreateGroupDialog({
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="grid gap-2">
                 <label htmlFor="payout_amount" className="text-sm font-medium">Total Payout (GHS)</label>
                 <Input

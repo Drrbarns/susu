@@ -91,21 +91,21 @@ function KPI({ label, value, sub, icon: Icon, trend, color = "gold" }: {
   
   return (
     <Card className={`border-l-4 shadow-sm hover:shadow-md transition-shadow ${styles.split(' ')[0]}`}>
-      <CardContent className="p-4">
+      <CardContent className="p-3 sm:p-4">
         <div className="flex items-start justify-between">
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{label}</p>
-            <p className="text-2xl font-bold text-navy-900 dark:text-white mt-1 truncate">{value}</p>
-            {sub && <p className="text-[11px] text-muted-foreground mt-0.5">{sub}</p>}
+            <p className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wider">{label}</p>
+            <p className="text-lg sm:text-2xl font-bold text-navy-900 dark:text-white mt-0.5 sm:mt-1 truncate">{value}</p>
+            {sub && <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5 truncate">{sub}</p>}
           </div>
-          <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ml-2 ${styles.split(' ').slice(2).join(' ')}`}>
-            <Icon className={`h-5 w-5 ${styles.split(' ')[1]}`} />
+          <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0 ml-2 ${styles.split(' ').slice(2).join(' ')}`}>
+            <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${styles.split(' ')[1]}`} />
           </div>
         </div>
         {trend && (
-          <div className={`flex items-center gap-1 mt-3 text-xs font-medium px-2 py-0.5 rounded-full w-fit ${trend.up ? "bg-green-100 text-green-700 dark:bg-green-900/30" : "bg-red-100 text-red-700 dark:bg-red-900/30"}`}>
+          <div className={`flex items-center gap-1 mt-2 sm:mt-3 text-[10px] sm:text-xs font-medium px-1.5 sm:px-2 py-0.5 rounded-full w-fit ${trend.up ? "bg-green-100 text-green-700 dark:bg-green-900/30" : "bg-red-100 text-red-700 dark:bg-red-900/30"}`}>
             {trend.up ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
-            {trend.value}
+            <span className="truncate">{trend.value}</span>
           </div>
         )}
       </CardContent>
@@ -195,7 +195,7 @@ export default function AdminAnalyticsPage() {
     return (
       <div className="space-y-6">
         <div><h1 className="text-2xl font-bold">Analytics</h1><p className="text-muted-foreground">Loading platform data...</p></div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">{[1,2,3,4,5,6,7,8].map(i => <Skeleton key={i} className="h-28" />)}</div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">{[1,2,3,4,5,6,7,8].map(i => <Skeleton key={i} className="h-24 sm:h-28" />)}</div>
         <Skeleton className="h-96" />
       </div>
     );
@@ -219,21 +219,21 @@ export default function AdminAnalyticsPage() {
   return (
     <div className="space-y-8 pb-10">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-xl bg-navy-900 text-white p-8 shadow-xl">
+      <div className="relative overflow-hidden rounded-xl bg-navy-900 text-white p-5 sm:p-8 shadow-xl">
         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-gold-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl" />
         
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Analytics Command Center</h1>
-          <p className="text-navy-100 flex items-center gap-2 text-sm">
-            <Activity className="h-4 w-4 text-gold-400" />
-            Comprehensive platform intelligence &bull; Auto-refreshes every 60s
+          <h1 className="text-xl sm:text-3xl font-bold tracking-tight text-white mb-1 sm:mb-2">Analytics Command Center</h1>
+          <p className="text-navy-100 flex items-center gap-2 text-xs sm:text-sm">
+            <Activity className="h-4 w-4 text-gold-400 shrink-0" />
+            <span>Platform intelligence &bull; Auto-refreshes every 60s</span>
           </p>
         </div>
       </div>
 
       {/* Top-level KPIs */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 -mt-6 px-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 -mt-4 sm:-mt-6">
         <KPI label="Platform Balance" value={formatCurrency(fin.walletSummary.total_balance)} sub={`${fin.walletSummary.wallet_count} active wallets`} icon={Wallet} color="gold" />
         <KPI label="Total Users" value={String(usr.growth.total)} sub={`+${usr.growth.last_7} this week`} icon={Users} color="blue" trend={{ value: `+${usr.growth.last_30} this month`, up: true }} />
         <KPI label="Total Revenue" value={formatCurrency(totalRevenue)} sub="Fees + penalties" icon={DollarSign} color="green" />
@@ -242,29 +242,31 @@ export default function AdminAnalyticsPage() {
 
       {/* Tabs */}
       <Tabs defaultValue="financial" className="space-y-6">
-        <div className="bg-card rounded-lg p-1 shadow-sm border inline-flex">
-          <TabsList className="bg-transparent p-0 h-auto gap-1">
-            <TabsTrigger value="financial" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-3 rounded-md"><DollarSign className="h-4 w-4 mr-2" />Financial</TabsTrigger>
-            <TabsTrigger value="users" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-3 rounded-md"><Users className="h-4 w-4 mr-2" />Users</TabsTrigger>
-            <TabsTrigger value="groups" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-3 rounded-md"><Layers className="h-4 w-4 mr-2" />Groups</TabsTrigger>
-            <TabsTrigger value="contributions" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-3 rounded-md"><CalendarCheck className="h-4 w-4 mr-2" />Contributions</TabsTrigger>
-            <TabsTrigger value="payments" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-3 rounded-md"><CreditCard className="h-4 w-4 mr-2" />Payments</TabsTrigger>
-            <TabsTrigger value="risk" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-3 rounded-md"><Shield className="h-4 w-4 mr-2" />Risk &amp; SMS</TabsTrigger>
-          </TabsList>
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
+          <div className="bg-card rounded-lg p-1 shadow-sm border inline-flex min-w-max">
+            <TabsList className="bg-transparent p-0 h-auto gap-0.5 sm:gap-1">
+              <TabsTrigger value="financial" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-2 sm:px-3 rounded-md text-xs sm:text-sm"><DollarSign className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-2 shrink-0" /><span className="hidden xs:inline">Financial</span><span className="xs:hidden">Finance</span></TabsTrigger>
+              <TabsTrigger value="users" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-2 sm:px-3 rounded-md text-xs sm:text-sm"><Users className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-2 shrink-0" />Users</TabsTrigger>
+              <TabsTrigger value="groups" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-2 sm:px-3 rounded-md text-xs sm:text-sm"><Layers className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-2 shrink-0" />Groups</TabsTrigger>
+              <TabsTrigger value="contributions" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-2 sm:px-3 rounded-md text-xs sm:text-sm"><CalendarCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-2 shrink-0" /><span className="hidden sm:inline">Contributions</span><span className="sm:hidden">Contribs</span></TabsTrigger>
+              <TabsTrigger value="payments" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-2 sm:px-3 rounded-md text-xs sm:text-sm"><CreditCard className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-2 shrink-0" /><span className="hidden sm:inline">Payments</span><span className="sm:hidden">Pay</span></TabsTrigger>
+              <TabsTrigger value="risk" className="data-[state=active]:bg-navy-50 data-[state=active]:text-navy-900 data-[state=active]:shadow-sm py-2 px-2 sm:px-3 rounded-md text-xs sm:text-sm"><Shield className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-2 shrink-0" /><span className="hidden sm:inline">Risk &amp; SMS</span><span className="sm:hidden">Risk</span></TabsTrigger>
+            </TabsList>
+          </div>
         </div>
 
         {/* ===== FINANCIAL TAB ===== */}
         <TabsContent value="financial" className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
           <SectionHeader title="Financial Overview" subtitle="Detailed breakdown of platform funds and revenue" />
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <KPI label="Total Deposited" value={formatCurrency(fin.walletSummary.total_deposited)} icon={TrendingUp} color="green" />
             <KPI label="Total Withdrawn" value={formatCurrency(fin.walletSummary.total_withdrawn)} icon={TrendingDown} color="red" />
             <KPI label="Total Contributed" value={formatCurrency(fin.walletSummary.total_contributed)} icon={CalendarCheck} color="gold" />
             <KPI label="Total Payouts" value={formatCurrency(fin.walletSummary.payout_total)} icon={Wallet} color="blue" />
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* Revenue breakdown */}
             <Card>
               <CardHeader className="pb-2"><CardTitle className="text-sm">Revenue Breakdown</CardTitle></CardHeader>
@@ -346,7 +348,7 @@ export default function AdminAnalyticsPage() {
         <TabsContent value="users" className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
           <SectionHeader title="User Growth & Activity" subtitle="Track user acquisition and engagement metrics" />
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <KPI label="Total Users" value={String(usr.growth.total)} icon={Users} color="blue" />
             <KPI label="New This Week" value={`+${usr.growth.last_7}`} sub="Last 7 days" icon={UserCheck} color="green" trend={{ value: `+${usr.growth.last_30} this month`, up: true }} />
             <KPI label="Phone Verified" value={`${usr.phoneVerification.verified}/${usr.phoneVerification.total}`} sub={`${usr.phoneVerification.total > 0 ? Math.round((usr.phoneVerification.verified / usr.phoneVerification.total) * 100) : 0}% rate`} icon={Phone} color="green" />
@@ -439,7 +441,7 @@ export default function AdminAnalyticsPage() {
         <TabsContent value="groups" className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
           <SectionHeader title="Group Performance" subtitle="Monitor group creation, status, and health" />
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <KPI label="Total Groups" value={String(grp.byStatus.reduce((a, b) => a + b.count, 0))} icon={Layers} color="blue" />
             <KPI label="Active Groups" value={String(grp.byStatus.find(s => s.status === "active")?.count || 0)} icon={Activity} color="green" />
             <KPI label="Total Potential Payout" value={formatCurrency(grp.totalPotentialPayout)} sub="All active groups" icon={DollarSign} color="gold" />
@@ -501,7 +503,7 @@ export default function AdminAnalyticsPage() {
         <TabsContent value="contributions" className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
           <SectionHeader title="Contribution Tracking" subtitle="Monitor payment compliance and schedules" />
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <KPI label="Total Paid" value={formatCurrency(ctr.paymentStats.total)} sub={`${ctr.paymentStats.count} payments`} icon={CheckCircle} color="green" />
             <KPI label="Late Contributions" value={String(ctr.paymentStats.late_count)} sub={`${formatCurrency(ctr.paymentStats.late_fees)} in late fees`} icon={Clock} color="red" />
             <KPI label="Today's Due" value={String(ctr.todayDue.total_due)} sub={`${ctr.todayDue.paid} paid, ${ctr.todayDue.unpaid} unpaid`} icon={CalendarCheck} color="gold" />
@@ -582,7 +584,7 @@ export default function AdminAnalyticsPage() {
         <TabsContent value="payments" className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
           <SectionHeader title="Payment Processing" subtitle="Transaction volume and gateway performance" />
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <KPI label="This Month Volume" value={formatCurrency(pay.monthStats.volume)} sub={`${pay.monthStats.count} transactions`} icon={CreditCard} color="gold" />
             <KPI label="Avg Transaction" value={formatCurrency(pay.monthStats.avg_amount)} sub="This month" icon={BarChart3} color="blue" />
             <KPI label="Fees Collected" value={formatCurrency(pay.monthStats.fees)} sub="This month" icon={DollarSign} color="green" />
@@ -668,7 +670,7 @@ export default function AdminAnalyticsPage() {
         <TabsContent value="risk" className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
           <SectionHeader title="Risk & Notifications" subtitle="Identify potential issues and communication metrics" />
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <KPI label="Contribution Missers" value={String(risk.topMissers.length)} sub="Users with missed contributions" icon={AlertTriangle} color="red" />
             <KPI label="SMS Sent" value={String(sms.byStatus.reduce((a, b) => a + b.count, 0))} icon={MessageSquare} color="blue" />
             <KPI label="SMS Cost" value={formatCurrency(sms.byStatus.reduce((a, b) => a + Number(b.cost), 0))} sub="Total spent" icon={DollarSign} color="gold" />

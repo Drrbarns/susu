@@ -164,7 +164,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             initial={{ x: -280 }}
             animate={{ x: 0 }}
             exit={{ x: -280 }}
-            className="fixed inset-y-0 left-0 w-64 bg-card border-r border-border z-50 md:hidden"
+            className="fixed inset-y-0 left-0 w-64 bg-card border-r border-border z-50 md:hidden flex flex-col"
           >
             <div className="p-4 border-b border-border">
               <Link href="/admin/dashboard" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
@@ -177,7 +177,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 />
               </Link>
             </div>
-            <nav className="p-2 space-y-1">
+            <nav className="p-2 space-y-1 flex-1 overflow-y-auto">
               {navItems.map((item) => {
                 const Icon = iconMap[item.icon] || LayoutDashboard;
                 const isActive = pathname === item.href;
@@ -192,6 +192,24 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 );
               })}
             </nav>
+
+            {/* Mobile sidebar footer */}
+            <div className="p-2 border-t border-border space-y-1">
+              <button
+                onClick={() => { setTheme(theme === "dark" ? "light" : "dark"); }}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+              </button>
+              <button
+                onClick={() => { setMobileOpen(false); handleLogout(); }}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-destructive hover:bg-destructive/10 transition-colors"
+              >
+                <LogOut className="h-4 w-4" />
+                <span>Sign Out</span>
+              </button>
+            </div>
           </motion.div>
         </>
       )}

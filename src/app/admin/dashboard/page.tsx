@@ -15,15 +15,15 @@ function KPICard({ title, value, subtitle, icon: Icon, trend, trendUp, delay }: 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay }}>
       <Card>
-        <CardContent className="p-5">
+        <CardContent className="p-3 sm:p-5">
           <div className="flex items-start justify-between">
-            <div>
-              <p className="text-sm text-muted-foreground mb-1">{title}</p>
-              <p className="text-2xl font-bold text-foreground">{value}</p>
-              {subtitle && <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>}
+            <div className="min-w-0 flex-1">
+              <p className="text-xs sm:text-sm text-muted-foreground mb-0.5 sm:mb-1">{title}</p>
+              <p className="text-lg sm:text-2xl font-bold text-foreground truncate">{value}</p>
+              {subtitle && <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">{subtitle}</p>}
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center">
-              <Icon className="h-5 w-5 text-gold-600" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center shrink-0 ml-2">
+              <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-gold-600" />
             </div>
           </div>
           {trend && (
@@ -48,16 +48,16 @@ export default function AdminDashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-muted-foreground">Overview of your susu platform</p>
+        <h1 className="text-xl sm:text-2xl font-bold text-foreground">Dashboard</h1>
+        <p className="text-sm text-muted-foreground">Overview of your susu platform</p>
       </div>
 
       {isLoading ? (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => <Skeleton key={i} className="h-32" />)}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => <Skeleton key={i} className="h-24 sm:h-32" />)}
         </div>
       ) : (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <KPICard title="Total Users" value={String(stats?.total_users || 0)} icon={Users} trend="+12 this week" trendUp delay={0} />
           <KPICard title="Active Groups" value={String(stats?.active_groups || 0)} subtitle={`${stats?.total_groups || 0} total`} icon={Users} delay={0.05} />
           <KPICard title="Total Contributed" value={formatCurrency(stats?.total_contributed || 0)} icon={CircleDollarSign} trend="+8.2%" trendUp delay={0.1} />
