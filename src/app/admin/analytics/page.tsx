@@ -284,7 +284,9 @@ export default function AdminAnalyticsPage() {
                 {fin.transactionTypes.length > 0 ? (
                   <ResponsiveContainer width="100%" height={200}>
                     <RePieChart>
-                      <Pie data={fin.transactionTypes} dataKey="count" nameKey="type" cx="50%" cy="50%" outerRadius={70} label={(props: Record<string, unknown>) => `${props.name || ''} ${((props.percent as number) * 100).toFixed(0)}%`} labelLine={false} fontSize={10}>
+                      <Pie data={fin.transactionTypes} dataKey="count" nameKey="type" cx="50%" cy="50%" outerRadius={70}
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        label={(props: any) => `${props.name || ''} ${((props.percent ?? 0) * 100).toFixed(0)}%`} labelLine={false} fontSize={10}>
                         {fin.transactionTypes.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                       </Pie>
                       <Tooltip formatter={(v: number) => [v, "Transactions"]} {...tooltipStyle} />
