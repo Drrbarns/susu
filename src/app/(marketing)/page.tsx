@@ -196,11 +196,24 @@ export default function HomePage() {
       </section>
 
       {/* ── WHAT IS SUSU ── */}
-      <section className="py-24 bg-navy-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 text-white overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/susu-community-bg.jpg"
+            alt="Ghanaian community savings gathering"
+            fill
+            className="object-cover"
+            quality={85}
+          />
+          {/* Navy overlay */}
+          <div className="absolute inset-0 bg-navy-950/88" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold text-white mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold text-white mb-6 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-gold-500" />
                 About Juli Susu
               </div>
@@ -220,28 +233,28 @@ export default function HomePage() {
 
             {/* Stats card cluster */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm">
+              <div className="bg-white/8 rounded-2xl p-6 border border-white/10 backdrop-blur-md">
                 <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
                   <Wallet className="h-6 w-6 text-gold-400" />
                 </div>
                 <div className="text-2xl font-bold text-white mb-1">GHS 25M+</div>
-                <div className="text-sm text-gray-400">Saved on the platform</div>
+                <div className="text-sm text-gray-300">Saved on the platform</div>
               </div>
-              <div className="bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm">
+              <div className="bg-white/8 rounded-2xl p-6 border border-white/10 backdrop-blur-md">
                 <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
                   <Users className="h-6 w-6 text-gold-400" />
                 </div>
                 <div className="text-2xl font-bold text-white mb-1">15K+</div>
-                <div className="text-sm text-gray-400">Active savers</div>
+                <div className="text-sm text-gray-300">Active savers</div>
               </div>
-              <div className="bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm">
+              <div className="bg-white/8 rounded-2xl p-6 border border-white/10 backdrop-blur-md">
                 <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
                   <TrendingUp className="h-6 w-6 text-gold-400" />
                 </div>
                 <div className="text-2xl font-bold text-white mb-1">99.9%</div>
-                <div className="text-sm text-gray-400">Payout success rate</div>
+                <div className="text-sm text-gray-300">Payout success rate</div>
               </div>
-              <div className="bg-gold-500 text-navy-900 rounded-2xl p-6 shadow-lg">
+              <div className="bg-gold-500 text-navy-900 rounded-2xl p-6 shadow-lg shadow-gold-500/20">
                 <div className="w-12 h-12 rounded-xl bg-navy-900/10 flex items-center justify-center mb-4">
                   <Star className="h-6 w-6 text-navy-900 fill-navy-900" />
                 </div>
