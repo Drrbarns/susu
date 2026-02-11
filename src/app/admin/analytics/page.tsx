@@ -289,7 +289,8 @@ export default function AdminAnalyticsPage() {
                         label={(props: any) => `${props.name || ''} ${((props.percent ?? 0) * 100).toFixed(0)}%`} labelLine={false} fontSize={10}>
                         {fin.transactionTypes.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                       </Pie>
-                      <Tooltip formatter={(v: number) => [v, "Transactions"]} {...tooltipStyle} />
+                      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                      <Tooltip formatter={(v: any) => [v, "Transactions"]} {...tooltipStyle} />
                     </RePieChart>
                   </ResponsiveContainer>
                 ) : <p className="text-center text-sm text-muted-foreground py-8">No transactions yet</p>}
@@ -332,7 +333,7 @@ export default function AdminAnalyticsPage() {
                     <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                     <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11 }} />
                     <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `₵${v}`} />
-                    <Tooltip formatter={(v: number) => [formatCurrency(v), "Volume"]} labelFormatter={(l) => formatDate(l)} {...tooltipStyle} />
+                    <Tooltip formatter={(v: any) => [formatCurrency(v), "Volume"]} labelFormatter={(l: any) => formatDate(l)} {...tooltipStyle} />
                     <Area type="monotone" dataKey="volume" stroke={GOLD} fill="url(#gradVol)" strokeWidth={2} />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -363,7 +364,7 @@ export default function AdminAnalyticsPage() {
                       <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                       <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11 }} />
                       <YAxis tick={{ fontSize: 11 }} allowDecimals={false} />
-                      <Tooltip formatter={(v: number) => [v, "Signups"]} labelFormatter={(l) => formatDate(l)} {...tooltipStyle} />
+                      <Tooltip formatter={(v: any) => [v, "Signups"]} labelFormatter={(l: any) => formatDate(l)} {...tooltipStyle} />
                       <Bar dataKey="count" fill={NAVY} radius={[3, 3, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
@@ -378,7 +379,8 @@ export default function AdminAnalyticsPage() {
                 {usr.kycBreakdown.length > 0 ? (
                   <ResponsiveContainer width="100%" height={220}>
                     <RePieChart>
-                      <Pie data={usr.kycBreakdown} dataKey="count" nameKey="kyc_status" cx="50%" cy="50%" outerRadius={80} label={({ kyc_status, percent }) => `${kyc_status.replace(/_/g, " ")} ${(percent * 100).toFixed(0)}%`} labelLine={false} fontSize={10}>
+                      <Pie data={usr.kycBreakdown} dataKey="count" nameKey="kyc_status" cx="50%" cy="50%" outerRadius={80} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        label={(props: any) => `${(props.kyc_status || '').replace(/_/g, " ")} ${((props.percent ?? 0) * 100).toFixed(0)}%`} labelLine={false} fontSize={10}>
                         {usr.kycBreakdown.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                       </Pie>
                       <Tooltip {...tooltipStyle} />
@@ -452,7 +454,8 @@ export default function AdminAnalyticsPage() {
                 {grp.byStatus.length > 0 ? (
                   <ResponsiveContainer width="100%" height={220}>
                     <RePieChart>
-                      <Pie data={grp.byStatus} dataKey="count" nameKey="status" cx="50%" cy="50%" outerRadius={80} label={({ status, count }) => `${status} (${count})`} labelLine={false} fontSize={10}>
+                      <Pie data={grp.byStatus} dataKey="count" nameKey="status" cx="50%" cy="50%" outerRadius={80} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        label={(props: any) => `${props.status} (${props.count})`} labelLine={false} fontSize={10}>
                         {grp.byStatus.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                       </Pie>
                       <Tooltip {...tooltipStyle} />
@@ -526,7 +529,7 @@ export default function AdminAnalyticsPage() {
                       <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                       <XAxis type="number" tick={{ fontSize: 11 }} />
                       <YAxis dataKey="status" type="category" tick={{ fontSize: 11 }} width={70} />
-                      <Tooltip formatter={(v: number) => [v, "Count"]} {...tooltipStyle} />
+                      <Tooltip formatter={(v: any) => [v, "Count"]} {...tooltipStyle} />
                       <Bar dataKey="count" fill={GOLD} radius={[0, 3, 3, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
@@ -550,7 +553,7 @@ export default function AdminAnalyticsPage() {
                       <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                       <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11 }} />
                       <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `₵${v}`} />
-                      <Tooltip formatter={(v: number) => [formatCurrency(v), "Volume"]} labelFormatter={(l) => formatDate(l)} {...tooltipStyle} />
+                      <Tooltip formatter={(v: any) => [formatCurrency(v), "Volume"]} labelFormatter={(l: any) => formatDate(l)} {...tooltipStyle} />
                       <Area type="monotone" dataKey="volume" stroke="#22c55e" fill="url(#gradCtr)" strokeWidth={2} />
                     </AreaChart>
                   </ResponsiveContainer>
@@ -606,7 +609,7 @@ export default function AdminAnalyticsPage() {
                       <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                       <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11 }} />
                       <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `₵${v}`} />
-                      <Tooltip formatter={(v: number) => [formatCurrency(v), "Volume"]} labelFormatter={(l) => formatDate(l)} {...tooltipStyle} />
+                      <Tooltip formatter={(v: any) => [formatCurrency(v), "Volume"]} labelFormatter={(l: any) => formatDate(l)} {...tooltipStyle} />
                       <Bar dataKey="volume" fill={GOLD} radius={[3, 3, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
@@ -621,7 +624,8 @@ export default function AdminAnalyticsPage() {
                 {pay.intentStatus.length > 0 ? (
                   <ResponsiveContainer width="100%" height={220}>
                     <RePieChart>
-                      <Pie data={pay.intentStatus} dataKey="count" nameKey="status" cx="50%" cy="50%" outerRadius={80} label={({ status, count }) => `${status} (${count})`} labelLine={false} fontSize={10}>
+                      <Pie data={pay.intentStatus} dataKey="count" nameKey="status" cx="50%" cy="50%" outerRadius={80} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        label={(props: any) => `${props.status} (${props.count})`} labelLine={false} fontSize={10}>
                         {pay.intentStatus.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                       </Pie>
                       <Tooltip {...tooltipStyle} />
@@ -708,7 +712,7 @@ export default function AdminAnalyticsPage() {
                     <BarChart data={sms.dailyTrend}>
                       <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 10 }} />
                       <YAxis tick={{ fontSize: 10 }} allowDecimals={false} />
-                      <Tooltip formatter={(v: number) => [v, "SMS Sent"]} labelFormatter={(l) => formatDate(l)} {...tooltipStyle} />
+                      <Tooltip formatter={(v: any) => [v, "SMS Sent"]} labelFormatter={(l: any) => formatDate(l)} {...tooltipStyle} />
                       <Bar dataKey="count" fill="#8b5cf6" radius={[3, 3, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
