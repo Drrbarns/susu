@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   LayoutDashboard, Users, UserCheck, Banknote, ArrowDownToLine,
@@ -66,9 +67,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gold-500 flex items-center justify-center animate-pulse">
-            <span className="text-navy-900 font-bold text-sm">JS</span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="JuliSusu Logo"
+            width={120}
+            height={40}
+            className="h-10 w-auto animate-pulse"
+          />
           <p className="text-muted-foreground text-sm">Loading admin...</p>
         </div>
       </div>
@@ -87,10 +92,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="flex items-center justify-between p-4 border-b border-border">
           {sidebarOpen && (
             <Link href="/admin/dashboard" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gold-500 flex items-center justify-center">
-                <span className="text-navy-900 font-bold text-xs">JS</span>
-              </div>
-              <span className="font-bold text-foreground">Admin</span>
+              <Image
+                src="/logo.png"
+                alt="JuliSusu Logo"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+              />
             </Link>
           )}
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1.5 rounded-md hover:bg-muted transition-colors">
@@ -137,7 +145,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 rounded-lg hover:bg-muted">
             <Menu className="h-5 w-5" />
           </button>
-          <span className="font-bold text-foreground">Admin Panel</span>
+          <Image
+            src="/logo.png"
+            alt="JuliSusu Logo"
+            width={100}
+            height={32}
+            className="h-8 w-auto"
+          />
           <Avatar name={user.name} size="sm" />
         </div>
       </div>
@@ -154,10 +168,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           >
             <div className="p-4 border-b border-border">
               <Link href="/admin/dashboard" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-                <div className="w-8 h-8 rounded-lg bg-gold-500 flex items-center justify-center">
-                  <span className="text-navy-900 font-bold text-xs">JS</span>
-                </div>
-                <span className="font-bold text-foreground">Admin</span>
+                <Image
+                  src="/logo.png"
+                  alt="JuliSusu Logo"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto"
+                />
               </Link>
             </div>
             <nav className="p-2 space-y-1">

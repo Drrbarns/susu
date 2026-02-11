@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ShieldCheck, ArrowRight, RotateCcw, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -189,9 +190,13 @@ export default function VerifyOTPPage() {
     <Suspense
       fallback={
         <div className="flex items-center justify-center py-20">
-          <div className="w-8 h-8 rounded-lg bg-gold-500 flex items-center justify-center animate-pulse">
-            <span className="text-navy-900 font-bold text-xs">JS</span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="JuliSusu Logo"
+            width={100}
+            height={32}
+            className="h-8 w-auto animate-pulse"
+          />
         </div>
       }
     >

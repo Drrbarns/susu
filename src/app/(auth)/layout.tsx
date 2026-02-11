@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Shield, Users, TrendingUp, Star } from "lucide-react";
 
 const stats = [
@@ -30,12 +31,13 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="relative z-10 flex flex-col h-full p-8 xl:p-10">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-lg bg-gold-500 flex items-center justify-center transition-transform group-hover:scale-105">
-              <span className="text-navy-900 font-bold text-sm">JS</span>
-            </div>
-            <span className="font-bold text-white text-xl tracking-tight">
-              Juli<span className="text-gold-400">Susu</span>
-            </span>
+            <Image
+              src="/logo.png"
+              alt="JuliSusu Logo"
+              width={160}
+              height={55}
+              className="h-14 w-auto"
+            />
           </Link>
 
           {/* Main message */}
@@ -100,12 +102,13 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         {/* Mobile header */}
         <div className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-gray-100">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">JS</span>
-            </div>
-            <span className="font-bold text-navy-950 text-lg tracking-tight">
-              Juli<span className="text-gold-600">Susu</span>
-            </span>
+            <Image
+              src="/logo.png"
+              alt="JuliSusu Logo"
+              width={120}
+              height={40}
+              className="h-10 w-auto"
+            />
           </Link>
         </div>
 

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Home, Users, CircleDollarSign, Wallet, User, Bell, Moon, Sun,
@@ -57,9 +58,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gold-500 flex items-center justify-center animate-pulse">
-            <span className="text-navy-900 font-bold text-sm">JS</span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="JuliSusu Logo"
+            width={120}
+            height={40}
+            className="h-10 w-auto animate-pulse"
+          />
           <p className="text-muted-foreground text-sm">Loading...</p>
         </div>
       </div>
@@ -79,12 +84,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <div className="flex items-center justify-between p-4 border-b border-border h-16">
           {sidebarOpen && (
             <Link href="/app/dashboard" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gold-500 flex items-center justify-center">
-                <span className="text-navy-900 font-bold text-xs">JS</span>
-              </div>
-              <span className="font-bold text-foreground text-lg tracking-tight">
-                Juli<span className="text-gold-600">Susu</span>
-              </span>
+              <Image
+                src="/logo.png"
+                alt="JuliSusu Logo"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+              />
             </Link>
           )}
           <button 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -19,10 +20,14 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center transition-transform group-hover:scale-105">
-              <span className="text-white font-bold text-sm">JS</span>
-            </div>
-            <span className="font-bold text-navy-950 text-xl tracking-tight">Juli<span className="text-gold-600">Susu</span></span>
+            <Image
+              src="/logo.png"
+              alt="JuliSusu Logo"
+              width={150}
+              height={50}
+              className="h-12 w-auto transition-transform group-hover:scale-105"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
