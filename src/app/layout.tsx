@@ -18,24 +18,24 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "Juli Smart Susu | Save Together, Prosper Together",
-    template: "%s | Juli Smart Susu",
+    default: "JuliSmart Susu | Save Together, Prosper Together",
+    template: "%s | JuliSmart Susu",
   },
   description:
-    "Join trusted susu groups in Ghana. Daily contributions, guaranteed payouts. Save smarter with Juli Smart Susu.",
+    "Join trusted susu groups in Ghana. Daily contributions, guaranteed payouts. Save smarter with JuliSmart Susu.",
   keywords: ["susu", "ghana", "savings", "mobile money", "momo", "group savings", "rotating savings"],
-  authors: [{ name: "Juli Smart Susu" }],
+  authors: [{ name: "JuliSmart Susu" }],
   openGraph: {
     type: "website",
     locale: "en_GH",
-    siteName: "Juli Smart Susu",
-    title: "Juli Smart Susu | Save Together, Prosper Together",
+    siteName: "JuliSmart Susu",
+    title: "JuliSmart Susu | Save Together, Prosper Together",
     description: "Join trusted susu groups in Ghana. Daily contributions, guaranteed payouts.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Juli Smart Susu" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "JuliSmart Susu" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Juli Smart Susu",
+    title: "JuliSmart Susu",
     description: "Join trusted susu groups in Ghana. Daily contributions, guaranteed payouts.",
   },
   robots: { index: true, follow: true },

@@ -6,7 +6,7 @@ import { Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Financial literacy tips and susu savings advice from Juli Smart Susu.",
+  description: "Financial literacy tips and susu savings advice from JuliSmart Susu.",
 };
 
 const posts = [

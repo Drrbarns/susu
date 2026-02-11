@@ -192,7 +192,7 @@ export default function VerifyOTPPage() {
         <div className="flex items-center justify-center py-20">
           <Image
             src="/logo.png"
-            alt="JuliSusu Logo"
+            alt="JuliSmart Susu"
             width={100}
             height={32}
             className="h-8 w-auto animate-pulse"

@@ -30,7 +30,7 @@ const settingGroups: SettingGroup[] = [
     description: "Core branding and platform details",
     icon: Settings2,
     items: [
-      { key: "company_name", label: "Platform Name", placeholder: "Juli Smart Susu", description: "Displayed across the platform" },
+      { key: "company_name", label: "Platform Name", placeholder: "JuliSmart Susu", description: "Displayed across the platform" },
       { key: "support_email", label: "Support Email", placeholder: "support@julismartsusu.com" },
       { key: "support_phone", label: "Support Phone", placeholder: "+233000000000" },
       { key: "whatsapp_link", label: "WhatsApp Link", placeholder: "https://wa.me/233000000000" },

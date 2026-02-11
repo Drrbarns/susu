@@ -15,14 +15,14 @@ export function Footer() {
             <Link href="/" className="inline-block transition-opacity hover:opacity-90">
               <Image
                 src="/logo.png"
-                alt="JuliSusu Logo"
+                alt="JuliSmart Susu"
                 width={160}
                 height={55}
                 className="h-14 w-auto"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              Juli Smart Susu is a digital rotating savings platform. We help you save securely and get paid on time, every time.
+              JuliSmart Susu is a digital rotating savings platform. We help you save securely and get paid on time, every time.
             </p>
             <div className="flex gap-4">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
@@ -84,7 +84,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-navy-900 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Juli Smart Susu. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} JuliSmart Susu. All rights reserved.</p>
           <div className="flex gap-8">
             {FOOTER_LINKS.legal.map((link) => (
               <Link key={link.href} href={link.href} className="hover:text-white transition-colors">

@@ -69,7 +69,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="flex flex-col items-center gap-3">
           <Image
             src="/logo.png"
-            alt="JuliSusu Logo"
+            alt="JuliSmart Susu"
             width={120}
             height={40}
             className="h-10 w-auto animate-pulse"
@@ -94,7 +94,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Link href="/admin/dashboard" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
-                alt="JuliSusu Logo"
+                alt="JuliSmart Susu"
                 width={120}
                 height={40}
                 className="h-8 w-auto"
@@ -147,7 +147,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </button>
           <Image
             src="/logo.png"
-            alt="JuliSusu Logo"
+            alt="JuliSmart Susu"
             width={100}
             height={32}
             className="h-8 w-auto"
@@ -170,7 +170,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Link href="/admin/dashboard" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
                 <Image
                   src="/logo.png"
-                  alt="JuliSusu Logo"
+                  alt="JuliSmart Susu"
                   width={120}
                   height={40}
                   className="h-8 w-auto"

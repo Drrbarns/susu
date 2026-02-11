@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Juli Smart Susu Privacy Policy - How we protect your data.",
+  description: "JuliSmart Susu Privacy Policy - How we protect your data.",
 };
 
 export default function PrivacyPage() {

@@ -33,7 +33,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <Link href="/" className="flex items-center gap-2.5 group">
             <Image
               src="/logo.png"
-              alt="JuliSusu Logo"
+              alt="JuliSmart Susu"
               width={160}
               height={55}
               className="h-14 w-auto"
@@ -92,7 +92,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
           {/* Footer */}
           <div className="text-[11px] text-gray-600">
-            &copy; {new Date().getFullYear()} Juli Smart Susu. Licensed and regulated.
+            &copy; {new Date().getFullYear()} JuliSmart Susu. Licensed and regulated.
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/logo.png"
-              alt="JuliSusu Logo"
+              alt="JuliSmart Susu"
               width={120}
               height={40}
               className="h-10 w-auto"
@@ -122,7 +122,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         {/* Bottom text (mobile) */}
         <div className="lg:hidden text-center pb-6 px-4">
           <p className="text-[11px] text-gray-400">
-            &copy; {new Date().getFullYear()} Juli Smart Susu. Licensed and regulated.
+            &copy; {new Date().getFullYear()} JuliSmart Susu. Licensed and regulated.
           </p>
         </div>
       </div>

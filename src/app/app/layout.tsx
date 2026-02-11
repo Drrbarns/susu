@@ -60,7 +60,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <div className="flex flex-col items-center gap-3">
           <Image
             src="/logo.png"
-            alt="JuliSusu Logo"
+            alt="JuliSmart Susu"
             width={120}
             height={40}
             className="h-10 w-auto animate-pulse"
@@ -86,7 +86,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <Link href="/app/dashboard" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
-                alt="JuliSusu Logo"
+                alt="JuliSmart Susu"
                 width={120}
                 height={40}
                 className="h-8 w-auto"

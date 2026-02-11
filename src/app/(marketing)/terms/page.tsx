@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Juli Smart Susu Terms of Service.",
+  description: "JuliSmart Susu Terms of Service.",
 };
 
 export default function TermsPage() {
@@ -14,12 +14,12 @@ export default function TermsPage() {
 
         <section className="space-y-3">
           <h2 className="text-xl font-semibold text-foreground">1. Acceptance of Terms</h2>
-          <p className="text-muted-foreground leading-relaxed">By accessing and using Juli Smart Susu, you agree to be bound by these Terms of Service.</p>
+          <p className="text-muted-foreground leading-relaxed">By accessing and using JuliSmart Susu, you agree to be bound by these Terms of Service.</p>
         </section>
 
         <section className="space-y-3">
           <h2 className="text-xl font-semibold text-foreground">2. Description of Service</h2>
-          <p className="text-muted-foreground leading-relaxed">Juli Smart Susu provides a digital platform for group savings (susu). Users can join or create groups, make daily contributions via Mobile Money, and receive payouts according to the group schedule.</p>
+          <p className="text-muted-foreground leading-relaxed">JuliSmart Susu provides a digital platform for group savings (susu). Users can join or create groups, make daily contributions via Mobile Money, and receive payouts according to the group schedule.</p>
         </section>
 
         <section className="space-y-3">
@@ -39,12 +39,12 @@ export default function TermsPage() {
 
         <section className="space-y-3">
           <h2 className="text-xl font-semibold text-foreground">5. Fees</h2>
-          <p className="text-muted-foreground leading-relaxed">Juli Smart Susu may charge service fees on transactions. All applicable fees will be clearly displayed before you confirm any transaction.</p>
+          <p className="text-muted-foreground leading-relaxed">JuliSmart Susu may charge service fees on transactions. All applicable fees will be clearly displayed before you confirm any transaction.</p>
         </section>
 
         <section className="space-y-3">
           <h2 className="text-xl font-semibold text-foreground">6. Limitation of Liability</h2>
-          <p className="text-muted-foreground leading-relaxed">Juli Smart Susu facilitates the savings process but is not responsible for individual member defaults within groups.</p>
+          <p className="text-muted-foreground leading-relaxed">JuliSmart Susu facilitates the savings process but is not responsible for individual member defaults within groups.</p>
         </section>
 
         <section className="space-y-3">

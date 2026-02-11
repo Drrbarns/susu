@@ -104,7 +104,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <Image
             src="/hero-community.jpg"
-            alt="Friends saving together with Juli Smart Susu"
+            alt="Friends saving together with JuliSmart Susu"
             fill
             className="object-cover"
             priority
@@ -144,7 +144,7 @@ export default function HomePage() {
                   </Button>
                 </Link>
                 <Link href="/how-it-works">
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
+                  <Button size="lg" className="w-full sm:w-auto bg-white/15 border border-white/40 text-white hover:bg-white/25 backdrop-blur-sm font-semibold">
                     How It Works
                   </Button>
                 </Link>
@@ -215,13 +215,13 @@ export default function HomePage() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold text-white mb-6 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-gold-500" />
-                About Juli Susu
+                About JuliSmart Susu
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
                 The age-old Susu tradition, <br className="hidden sm:block" />built for the modern world.
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                For generations, Ghanaians have saved together through Susu — a community savings system built on trust. Juli Smart Susu digitizes this tradition, adding security, transparency, and convenience without losing the communal spirit.
+                For generations, Ghanaians have saved together through Susu — a community savings system built on trust. JuliSmart Susu digitizes this tradition, adding security, transparency, and convenience without losing the communal spirit.
               </p>
               <p className="text-gray-400 leading-relaxed mb-8">
                 Whether you&apos;re a market trader, a young professional, or saving for something big, Juli gives you a safe, simple way to grow your money with people you trust.
@@ -492,7 +492,7 @@ export default function HomePage() {
             Ready to start saving?
           </h2>
           <p className="text-xl text-navy-900/70 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join thousands of Ghanaians already building their financial future with Juli Smart Susu. It&apos;s free, safe, and takes less than a minute.
+            Join thousands of Ghanaians already building their financial future with JuliSmart Susu. It&apos;s free, safe, and takes less than a minute.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/signup">

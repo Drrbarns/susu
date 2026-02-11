@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Group Rules",
-  description: "Standard rules for Juli Smart Susu savings groups.",
+  description: "Standard rules for JuliSmart Susu savings groups.",
 };
 
 const rules = [
@@ -22,7 +22,7 @@ export default function GroupRulesPage() {
       <section className="bg-gradient-to-b from-navy-50 to-white dark:from-navy-950 dark:to-navy-900 py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">Group Rules</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Standard rules that apply to all Juli Smart Susu groups.</p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Standard rules that apply to all JuliSmart Susu groups.</p>
         </div>
       </section>
 

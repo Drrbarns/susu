@@ -6,9 +6,9 @@ import { ChevronDown, Search, Plus, Minus } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const faqs = [
-  { category: "General", q: "What is Susu?", a: "Susu is a traditional savings practice in Ghana where a group of people contribute a fixed amount of money daily, and each member takes turns receiving the total pool. Juli Smart Susu digitizes this process, making it more secure and convenient." },
-  { category: "General", q: "Is Juli Smart Susu safe?", a: "Yes! We use bank-level encryption for all transactions. Every contribution and payout is recorded on our secure platform. Our system ensures transparency and accountability." },
-  { category: "General", q: "Do I need a bank account?", a: "No! Juli Smart Susu works entirely with Mobile Money (MTN MoMo, Vodafone Cash, AirtelTigo Money). No bank account required." },
+  { category: "General", q: "What is Susu?", a: "Susu is a traditional savings practice in Ghana where a group of people contribute a fixed amount of money daily, and each member takes turns receiving the total pool. JuliSmart Susu digitizes this process, making it more secure and convenient." },
+  { category: "General", q: "Is JuliSmart Susu safe?", a: "Yes! We use bank-level encryption for all transactions. Every contribution and payout is recorded on our secure platform. Our system ensures transparency and accountability." },
+  { category: "General", q: "Do I need a bank account?", a: "No! JuliSmart Susu works entirely with Mobile Money (MTN MoMo, Vodafone Cash, AirtelTigo Money). No bank account required." },
   { category: "Payments", q: "How do I make contributions?", a: "You can pay via Mobile Money directly from the app. You'll receive a daily reminder, and payment takes just a few taps." },
   { category: "Payments", q: "What happens if I miss a payment?", a: "Each group has a grace period (usually 24 hours). After that, a small late fee may apply. Consistent non-payment may result in removal from the group." },
   { category: "Payments", q: "When do I receive my payout?", a: "Payouts follow the turn order in your group. When it's your turn, the entire day's collection from all members is sent directly to your MoMo wallet." },
@@ -38,7 +38,7 @@ export default function FAQsPage() {
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">Frequently Asked Questions</h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
-            Everything you need to know about secure digital savings with Juli Susu.
+            Everything you need to know about secure digital savings with JuliSmart Susu.
           </p>
           <div className="max-w-lg mx-auto relative">
             <Input

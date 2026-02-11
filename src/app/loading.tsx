@@ -6,7 +6,7 @@ export default function Loading() {
       <div className="flex flex-col items-center gap-4">
         <Image
           src="/logo.png"
-          alt="JuliSusu Logo"
+          alt="JuliSmart Susu"
           width={120}
           height={40}
           className="h-12 w-auto animate-pulse"

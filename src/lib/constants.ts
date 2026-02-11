@@ -1,7 +1,7 @@
-export const APP_NAME = "Juli Smart Susu";
+export const APP_NAME = "JuliSmart Susu";
 export const APP_TAGLINE = "Your Savings, Our Priority";
 export const APP_DESCRIPTION =
-  "Join trusted susu groups in Ghana. Daily contributions, guaranteed payouts. Save together, prosper together with Juli Smart Susu.";
+  "Join trusted susu groups in Ghana. Daily contributions, guaranteed payouts. Save together, prosper together with JuliSmart Susu.";
 export const APP_URL = "https://julismartsusu.com";
 
 export const NAV_LINKS = [

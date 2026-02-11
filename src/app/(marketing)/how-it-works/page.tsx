@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "How It Works",
-  description: "Learn how Juli Smart Susu group savings work. Simple steps to start saving with your community.",
+  description: "Learn how JuliSmart Susu group savings work. Simple steps to start saving with your community.",
 };
 
 const steps = [
@@ -26,10 +26,10 @@ const faqs = [
 export default function HowItWorksPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-navy-50 to-white dark:from-navy-950 dark:to-navy-900 py-20">
+      <section className="bg-navy-950 py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">How Juli Smart Susu Works</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">How JuliSmart Susu Works</h1>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             The traditional Susu system, modernized for the digital age. Simple, secure, and accessible to everyone.
           </p>
         </div>
