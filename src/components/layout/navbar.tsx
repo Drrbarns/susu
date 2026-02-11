@@ -19,10 +19,10 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center transition-transform group-hover:scale-105">
+            <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center transition-transform group-hover:scale-105">
               <span className="text-white font-bold text-sm">JS</span>
             </div>
-            <span className="font-bold text-gray-900 text-xl tracking-tight">Juli<span className="text-gold-600">Susu</span></span>
+            <span className="font-bold text-navy-950 text-xl tracking-tight">Juli<span className="text-gold-600">Susu</span></span>
           </Link>
 
           {/* Desktop nav */}
@@ -34,7 +34,7 @@ export function Navbar() {
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-gold-600",
                   pathname === link.href
-                    ? "text-gray-900 font-semibold"
+                    ? "text-navy-950 font-semibold"
                     : "text-gray-500"
                 )}
               >
@@ -45,11 +45,11 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-6">
-            <Link href="/login" className="text-sm font-semibold text-gray-900 hover:text-gold-600 transition-colors">
+            <Link href="/login" className="text-sm font-semibold text-navy-950 hover:text-gold-600 transition-colors">
               Log in
             </Link>
             <Link href="/signup">
-              <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-6 font-semibold shadow-none h-10">
+              <Button className="bg-navy-900 text-white hover:bg-navy-800 rounded-full px-6 font-semibold shadow-none h-10">
                 Get Started
               </Button>
             </Link>
@@ -58,7 +58,7 @@ export function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-black transition-colors"
+            className="md:hidden p-2 text-gray-600 hover:text-navy-900 transition-colors"
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -83,7 +83,7 @@ export function Navbar() {
                   className={cn(
                     "block text-lg font-medium transition-colors",
                     pathname === link.href
-                      ? "text-black"
+                      ? "text-navy-900"
                       : "text-gray-500"
                   )}
                 >
@@ -95,7 +95,7 @@ export function Navbar() {
                   <Button variant="outline" className="w-full rounded-full border-gray-200 h-12 text-base">Log in</Button>
                 </Link>
                 <Link href="/signup" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-full h-12 text-base">Get Started</Button>
+                  <Button className="w-full bg-navy-900 text-white hover:bg-navy-800 rounded-full h-12 text-base">Get Started</Button>
                 </Link>
               </div>
             </div>

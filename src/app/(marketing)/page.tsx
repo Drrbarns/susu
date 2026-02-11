@@ -119,7 +119,7 @@ export default function HomePage() {
               { value: "4.9/5", label: "User Rating" },
             ].map((stat) => (
               <div key={stat.label} className="px-4">
-                <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
+                <div className="text-3xl font-bold text-navy-950 mb-1">{stat.value}</div>
                 <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">{stat.label}</div>
               </div>
             ))}
@@ -128,7 +128,7 @@ export default function HomePage() {
       </section>
 
       {/* ── WHAT IS SUSU ── */}
-      <section className="py-24 bg-neutral-900 text-white">
+      <section className="py-24 bg-navy-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -189,7 +189,7 @@ export default function HomePage() {
       <section className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 mb-4">
               Everything you need to save smarter
             </h2>
             <p className="text-lg text-gray-600">
@@ -208,9 +208,9 @@ export default function HomePage() {
                 className="group p-8 rounded-2xl bg-white border border-gray-200/60 shadow-sm hover:shadow-xl hover:shadow-gray-200/40 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-xl bg-stone-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <f.icon className="h-6 w-6 text-gray-900" />
+                  <f.icon className="h-6 w-6 text-navy-900" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{f.title}</h3>
+                <h3 className="text-xl font-bold text-navy-950 mb-3">{f.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
@@ -222,7 +222,7 @@ export default function HomePage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 mb-4">
               Start saving in under 2 minutes
             </h2>
             <p className="text-lg text-gray-600">
@@ -244,10 +244,10 @@ export default function HomePage() {
                 className="text-center bg-white"
               >
                 <div className="w-24 h-24 rounded-full bg-white border-4 border-stone-100 flex items-center justify-center mx-auto mb-6 shadow-sm relative z-10">
-                  <s.icon className="h-8 w-8 text-gray-900" />
+                  <s.icon className="h-8 w-8 text-navy-900" />
                 </div>
                 <div className="text-xs font-bold text-gold-600 mb-2 tracking-widest uppercase">Step {s.num}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{s.title}</h3>
+                <h3 className="text-lg font-bold text-navy-950 mb-2">{s.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed px-4">{s.desc}</p>
               </motion.div>
             ))}
@@ -255,7 +255,7 @@ export default function HomePage() {
 
           <div className="text-center mt-16">
             <Link href="/signup">
-              <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 h-12 text-base font-semibold shadow-lg shadow-black/5">
+              <Button className="bg-navy-900 text-white hover:bg-navy-800 rounded-full px-8 h-12 text-base font-semibold shadow-lg shadow-navy-900/5">
                 Get Started Now <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </Link>
@@ -268,7 +268,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 mb-4">
                 See how fast your savings grow
               </h2>
             </div>
@@ -279,8 +279,8 @@ export default function HomePage() {
                   <div className="space-y-10">
                     <div>
                       <div className="flex justify-between items-baseline mb-4">
-                        <label className="text-sm font-semibold text-gray-900">Daily Contribution</label>
-                        <span className="text-xl font-bold text-gray-900">{formatCurrency(calcAmount)}</span>
+                        <label className="text-sm font-semibold text-navy-950">Daily Contribution</label>
+                        <span className="text-xl font-bold text-navy-950">{formatCurrency(calcAmount)}</span>
                       </div>
                       <input
                         type="range"
@@ -289,7 +289,7 @@ export default function HomePage() {
                         step="5"
                         value={calcAmount}
                         onChange={(e) => setCalcAmount(Number(e.target.value))}
-                        className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-black"
+                        className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-navy-900"
                       />
                       <div className="flex justify-between text-xs text-gray-400 mt-2 font-medium">
                         <span>GHS 5</span>
@@ -299,8 +299,8 @@ export default function HomePage() {
 
                     <div>
                       <div className="flex justify-between items-baseline mb-4">
-                        <label className="text-sm font-semibold text-gray-900">Duration</label>
-                        <span className="text-xl font-bold text-gray-900">{calcDays} Days</span>
+                        <label className="text-sm font-semibold text-navy-950">Duration</label>
+                        <span className="text-xl font-bold text-navy-950">{calcDays} Days</span>
                       </div>
                       <input
                         type="range"
@@ -309,7 +309,7 @@ export default function HomePage() {
                         step="5"
                         value={calcDays}
                         onChange={(e) => setCalcDays(Number(e.target.value))}
-                        className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-black"
+                        className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-navy-900"
                       />
                       <div className="flex justify-between text-xs text-gray-400 mt-2 font-medium">
                         <span>10 days</span>
@@ -321,13 +321,13 @@ export default function HomePage() {
 
                 <div className="p-8 sm:p-12 bg-orange-50/50 flex flex-col justify-center border-t md:border-t-0 md:border-l border-orange-100/50">
                   <div className="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wide">Your Total Payout</div>
-                  <div className="text-5xl font-bold text-gray-900 mb-2">{formatCurrency(calcAmount * calcDays)}</div>
+                  <div className="text-5xl font-bold text-navy-950 mb-2">{formatCurrency(calcAmount * calcDays)}</div>
                   <div className="text-sm text-gray-500 mb-8">
                     Based on {calcDays} daily contributions of {formatCurrency(calcAmount)}
                   </div>
                   
                   <Link href="/signup" className="block">
-                    <Button className="w-full bg-black text-white hover:bg-gray-800 h-14 text-lg font-bold rounded-xl shadow-lg shadow-black/10">
+                    <Button className="w-full bg-navy-900 text-white hover:bg-navy-800 h-14 text-lg font-bold rounded-xl shadow-lg shadow-navy-900/10">
                       Start Saving This Amount
                     </Button>
                   </Link>
@@ -345,7 +345,7 @@ export default function HomePage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 mb-4">
               Loved by savers across Ghana
             </h2>
           </div>
@@ -367,11 +367,11 @@ export default function HomePage() {
                 </div>
                 <p className="text-lg text-gray-700 leading-relaxed mb-8 font-medium">&ldquo;{t.quote}&rdquo;</p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gray-100 text-gray-900 flex items-center justify-center text-sm font-bold border border-white shadow-sm">
+                  <div className="w-12 h-12 rounded-full bg-gray-100 text-navy-900 flex items-center justify-center text-sm font-bold border border-white shadow-sm">
                     {t.avatar}
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900">{t.name}</div>
+                    <div className="font-bold text-navy-950">{t.name}</div>
                     <div className="text-sm text-gray-500">{t.location}</div>
                   </div>
                 </div>
@@ -382,7 +382,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="py-24 bg-black text-white">
+      <section className="py-24 bg-navy-950 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 tracking-tight">
             Ready to start saving?
@@ -392,12 +392,12 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/signup">
-              <Button className="bg-white text-black hover:bg-gray-100 rounded-full px-8 h-14 text-lg font-bold w-full sm:w-auto">
+              <Button className="bg-white text-navy-950 hover:bg-gray-100 rounded-full px-8 h-14 text-lg font-bold w-full sm:w-auto">
                 Create Free Account
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="outline" className="border-gray-700 text-white hover:bg-gray-900 hover:text-white rounded-full px-8 h-14 text-lg font-medium w-full sm:w-auto">
+              <Button variant="outline" className="border-gray-700 text-white hover:bg-navy-900 hover:text-white rounded-full px-8 h-14 text-lg font-medium w-full sm:w-auto">
                 Talk to Us
               </Button>
             </Link>
