@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -11,6 +11,32 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
+
+interface CalcConfig {
+  calc_min_daily: number;
+  calc_max_daily: number;
+  calc_step_daily: number;
+  calc_default_daily: number;
+  calc_min_days: number;
+  calc_max_days: number;
+  calc_step_days: number;
+  calc_default_days: number;
+  service_fee_percent: number;
+  bonus_interest_percent: number;
+}
+
+const DEFAULT_CONFIG: CalcConfig = {
+  calc_min_daily: 5,
+  calc_max_daily: 200,
+  calc_step_daily: 5,
+  calc_default_daily: 20,
+  calc_min_days: 10,
+  calc_max_days: 100,
+  calc_step_days: 5,
+  calc_default_days: 30,
+  service_fee_percent: 0,
+  bonus_interest_percent: 0,
+};
 
 const features = [
   { icon: Shield, title: "Bank-Grade Security", desc: "End-to-end encryption protects every cedi. Your money is always safe." },
@@ -35,8 +61,40 @@ const testimonials = [
 ];
 
 export default function HomePage() {
-  const [calcAmount, setCalcAmount] = useState(20);
-  const [calcDays, setCalcDays] = useState(30);
+  const [cfg, setCfg] = useState<CalcConfig>(DEFAULT_CONFIG);
+  const [calcAmount, setCalcAmount] = useState(DEFAULT_CONFIG.calc_default_daily);
+  const [calcDays, setCalcDays] = useState(DEFAULT_CONFIG.calc_default_days);
+
+  useEffect(() => {
+    fetch("/api/settings/public")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data?.config) {
+          const c: CalcConfig = {
+            calc_min_daily: Number(data.config.calc_min_daily) || DEFAULT_CONFIG.calc_min_daily,
+            calc_max_daily: Number(data.config.calc_max_daily) || DEFAULT_CONFIG.calc_max_daily,
+            calc_step_daily: Number(data.config.calc_step_daily) || DEFAULT_CONFIG.calc_step_daily,
+            calc_default_daily: Number(data.config.calc_default_daily) || DEFAULT_CONFIG.calc_default_daily,
+            calc_min_days: Number(data.config.calc_min_days) || DEFAULT_CONFIG.calc_min_days,
+            calc_max_days: Number(data.config.calc_max_days) || DEFAULT_CONFIG.calc_max_days,
+            calc_step_days: Number(data.config.calc_step_days) || DEFAULT_CONFIG.calc_step_days,
+            calc_default_days: Number(data.config.calc_default_days) || DEFAULT_CONFIG.calc_default_days,
+            service_fee_percent: Number(data.config.service_fee_percent) || 0,
+            bonus_interest_percent: Number(data.config.bonus_interest_percent) || 0,
+          };
+          setCfg(c);
+          setCalcAmount(c.calc_default_daily);
+          setCalcDays(c.calc_default_days);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Payout calculation with fees and bonuses
+  const grossPayout = calcAmount * calcDays;
+  const feeDeduction = grossPayout * (cfg.service_fee_percent / 100);
+  const bonusAddition = grossPayout * (cfg.bonus_interest_percent / 100);
+  const netPayout = grossPayout - feeDeduction + bonusAddition;
 
   return (
     <>
@@ -303,16 +361,16 @@ export default function HomePage() {
                       </div>
                       <input
                         type="range"
-                        min="5"
-                        max="200"
-                        step="5"
+                        min={cfg.calc_min_daily}
+                        max={cfg.calc_max_daily}
+                        step={cfg.calc_step_daily}
                         value={calcAmount}
                         onChange={(e) => setCalcAmount(Number(e.target.value))}
                         className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-navy-900"
                       />
                       <div className="flex justify-between text-xs text-gray-400 mt-2 font-medium">
-                        <span>GHS 5</span>
-                        <span>GHS 200</span>
+                        <span>GHS {cfg.calc_min_daily}</span>
+                        <span>GHS {cfg.calc_max_daily}</span>
                       </div>
                     </div>
 
@@ -323,16 +381,16 @@ export default function HomePage() {
                       </div>
                       <input
                         type="range"
-                        min="10"
-                        max="100"
-                        step="5"
+                        min={cfg.calc_min_days}
+                        max={cfg.calc_max_days}
+                        step={cfg.calc_step_days}
                         value={calcDays}
                         onChange={(e) => setCalcDays(Number(e.target.value))}
                         className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-navy-900"
                       />
                       <div className="flex justify-between text-xs text-gray-400 mt-2 font-medium">
-                        <span>10 days</span>
-                        <span>100 days</span>
+                        <span>{cfg.calc_min_days} days</span>
+                        <span>{cfg.calc_max_days} days</span>
                       </div>
                     </div>
                   </div>
@@ -340,10 +398,24 @@ export default function HomePage() {
 
                 <div className="p-8 sm:p-12 bg-orange-50/50 flex flex-col justify-center border-t md:border-t-0 md:border-l border-orange-100/50">
                   <div className="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wide">Your Total Payout</div>
-                  <div className="text-5xl font-bold text-navy-950 mb-2">{formatCurrency(calcAmount * calcDays)}</div>
-                  <div className="text-sm text-gray-500 mb-8">
+                  <div className="text-5xl font-bold text-navy-950 mb-2">{formatCurrency(netPayout)}</div>
+                  <div className="text-sm text-gray-500 mb-3">
                     Based on {calcDays} daily contributions of {formatCurrency(calcAmount)}
                   </div>
+
+                  {(cfg.service_fee_percent > 0 || cfg.bonus_interest_percent > 0) && (
+                    <div className="text-xs text-gray-400 space-y-0.5 mb-6 border-t border-gray-100 pt-3">
+                      <p>Gross: {formatCurrency(grossPayout)}</p>
+                      {cfg.service_fee_percent > 0 && (
+                        <p>Service fee ({cfg.service_fee_percent}%): -{formatCurrency(feeDeduction)}</p>
+                      )}
+                      {cfg.bonus_interest_percent > 0 && (
+                        <p className="text-green-600">Bonus ({cfg.bonus_interest_percent}%): +{formatCurrency(bonusAddition)}</p>
+                      )}
+                    </div>
+                  )}
+
+                  {cfg.service_fee_percent === 0 && cfg.bonus_interest_percent === 0 && <div className="mb-5" />}
                   
                   <Link href="/signup" className="block">
                     <Button className="w-full bg-navy-900 text-white hover:bg-navy-800 h-14 text-lg font-bold rounded-xl shadow-lg shadow-navy-900/10">
