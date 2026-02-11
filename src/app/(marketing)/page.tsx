@@ -128,57 +128,57 @@ export default function HomePage() {
       </section>
 
       {/* ── WHAT IS SUSU ── */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-24 bg-neutral-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-semibold text-gray-900 mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold text-white mb-6">
                 <span className="w-2 h-2 rounded-full bg-gold-500" />
                 About Juli Susu
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
                 The age-old Susu tradition, <br className="hidden sm:block" />built for the modern world.
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
                 For generations, Ghanaians have saved together through Susu — a community savings system built on trust. Juli Smart Susu digitizes this tradition, adding security, transparency, and convenience without losing the communal spirit.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-gray-400 leading-relaxed mb-8">
                 Whether you&apos;re a market trader, a young professional, or saving for something big, Juli gives you a safe, simple way to grow your money with people you trust.
               </p>
-              <Link href="/how-it-works" className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:text-gold-600 transition-colors group">
+              <Link href="/how-it-works" className="inline-flex items-center gap-2 text-white font-semibold hover:text-gold-400 transition-colors group">
                 Learn how it works <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
 
             {/* Stats card cluster */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center mb-4">
-                  <Wallet className="h-6 w-6 text-gray-900" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">GHS 25M+</div>
-                <div className="text-sm text-gray-500">Saved on the platform</div>
-              </div>
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-gray-900" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">15K+</div>
-                <div className="text-sm text-gray-500">Active savers</div>
-              </div>
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-gray-900" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">99.9%</div>
-                <div className="text-sm text-gray-500">Payout success rate</div>
-              </div>
-              <div className="bg-gray-900 text-white rounded-2xl p-6 shadow-lg">
+              <div className="bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm">
                 <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
-                  <Star className="h-6 w-6 text-gold-400 fill-gold-400" />
+                  <Wallet className="h-6 w-6 text-gold-400" />
+                </div>
+                <div className="text-2xl font-bold text-white mb-1">GHS 25M+</div>
+                <div className="text-sm text-gray-400">Saved on the platform</div>
+              </div>
+              <div className="bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+                  <Users className="h-6 w-6 text-gold-400" />
+                </div>
+                <div className="text-2xl font-bold text-white mb-1">15K+</div>
+                <div className="text-sm text-gray-400">Active savers</div>
+              </div>
+              <div className="bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+                  <TrendingUp className="h-6 w-6 text-gold-400" />
+                </div>
+                <div className="text-2xl font-bold text-white mb-1">99.9%</div>
+                <div className="text-sm text-gray-400">Payout success rate</div>
+              </div>
+              <div className="bg-gold-500 text-navy-900 rounded-2xl p-6 shadow-lg">
+                <div className="w-12 h-12 rounded-xl bg-navy-900/10 flex items-center justify-center mb-4">
+                  <Star className="h-6 w-6 text-navy-900 fill-navy-900" />
                 </div>
                 <div className="text-2xl font-bold mb-1">4.9/5</div>
-                <div className="text-sm text-gray-400">Average rating</div>
+                <div className="text-sm text-navy-800/80 font-medium">Average rating</div>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURES ── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -205,9 +205,9 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="group p-8 rounded-2xl bg-white border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300"
+                className="group p-8 rounded-2xl bg-white border border-gray-200/60 shadow-sm hover:shadow-xl hover:shadow-gray-200/40 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-xl bg-stone-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <f.icon className="h-6 w-6 text-gray-900" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{f.title}</h3>
@@ -219,7 +219,7 @@ export default function HomePage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -232,7 +232,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
             {/* Connector Line (Desktop) */}
-            <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-gray-200 -z-10" />
+            <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-gray-100 -z-10" />
             
             {steps.map((s, i) => (
               <motion.div
@@ -241,9 +241,9 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12 }}
-                className="text-center bg-stone-50"
+                className="text-center bg-white"
               >
-                <div className="w-24 h-24 rounded-full bg-white border-4 border-stone-50 flex items-center justify-center mx-auto mb-6 shadow-sm relative z-10">
+                <div className="w-24 h-24 rounded-full bg-white border-4 border-stone-100 flex items-center justify-center mx-auto mb-6 shadow-sm relative z-10">
                   <s.icon className="h-8 w-8 text-gray-900" />
                 </div>
                 <div className="text-xs font-bold text-gold-600 mb-2 tracking-widest uppercase">Step {s.num}</div>
@@ -264,7 +264,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CALCULATOR ── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -319,7 +319,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="p-8 sm:p-12 bg-gray-50 flex flex-col justify-center border-t md:border-t-0 md:border-l border-gray-100">
+                <div className="p-8 sm:p-12 bg-orange-50/50 flex flex-col justify-center border-t md:border-t-0 md:border-l border-orange-100/50">
                   <div className="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wide">Your Total Payout</div>
                   <div className="text-5xl font-bold text-gray-900 mb-2">{formatCurrency(calcAmount * calcDays)}</div>
                   <div className="text-sm text-gray-500 mb-8">
@@ -342,7 +342,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
