@@ -67,23 +67,23 @@ export default function DashboardPage() {
         </div>
         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-gold-500/20 rounded-full blur-3xl" />
         
-        <CardContent className="relative z-10 p-8">
-          <div className="grid grid-cols-2 gap-8 items-center">
-            <div>
-              <p className="text-navy-200 text-sm font-medium mb-2 uppercase tracking-wide">Total Savings</p>
+        <CardContent className="relative z-10 p-5 sm:p-8">
+          <div className="flex flex-col sm:grid sm:grid-cols-2 gap-6 sm:gap-8 items-center">
+            <div className="text-center sm:text-left">
+              <p className="text-navy-200 text-xs sm:text-sm font-medium mb-2 uppercase tracking-wide">Total Savings</p>
               {walletLoading ? (
-                <Skeleton className="h-10 w-40 bg-navy-800" />
+                <Skeleton className="h-10 w-40 bg-navy-800 mx-auto sm:mx-0" />
               ) : (
-                <p className="text-4xl font-bold text-white tracking-tight">
+                <p className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
                   {formatCurrency(wallet?.total_contributed || user?.totalSaved || 0)}
                 </p>
               )}
-              <div className="flex items-center gap-2 mt-4 bg-navy-800/50 w-fit px-3 py-1.5 rounded-full border border-navy-700">
+              <div className="flex items-center gap-2 mt-4 bg-navy-800/50 w-fit px-3 py-1.5 rounded-full border border-navy-700 mx-auto sm:mx-0">
                 <TrendingUp className="h-3.5 w-3.5 text-green-400" />
                 <span className="text-xs font-medium text-green-400">On track for payout</span>
               </div>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-center sm:justify-end">
               <SavingsRing progress={wallet?.total_contributed || 0} total={(wallet?.total_contributed || 0) + totalDue} />
             </div>
           </div>
@@ -91,38 +91,44 @@ export default function DashboardPage() {
       </Card>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
         <Card className="shadow-sm hover:shadow-md transition-shadow border-l-4 border-gold-500">
-          <CardContent className="p-5 text-center">
-            <div className="w-10 h-10 mx-auto bg-gold-100 rounded-full flex items-center justify-center mb-2">
+          <CardContent className="p-4 sm:p-5 flex items-center gap-4 sm:flex-col sm:text-center">
+            <div className="w-10 h-10 shrink-0 sm:mx-auto bg-gold-100 rounded-full flex items-center justify-center sm:mb-2">
               <Wallet className="h-5 w-5 text-gold-600" />
             </div>
-            {walletLoading ? <Skeleton className="h-6 w-20 mx-auto" /> : (
-              <p className="text-xl font-bold text-navy-900">{formatCurrency(wallet?.balance || 0)}</p>
-            )}
-            <p className="text-xs text-muted-foreground font-medium uppercase mt-1">Wallet Balance</p>
+            <div className="sm:contents">
+              {walletLoading ? <Skeleton className="h-6 w-20 sm:mx-auto" /> : (
+                <p className="text-lg sm:text-xl font-bold text-navy-900">{formatCurrency(wallet?.balance || 0)}</p>
+              )}
+              <p className="text-xs text-muted-foreground font-medium uppercase sm:mt-1 ml-auto sm:ml-0">Wallet Balance</p>
+            </div>
           </CardContent>
         </Card>
         <Card className="shadow-sm hover:shadow-md transition-shadow border-l-4 border-orange-500">
-          <CardContent className="p-5 text-center">
-            <div className="w-10 h-10 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-2">
+          <CardContent className="p-4 sm:p-5 flex items-center gap-4 sm:flex-col sm:text-center">
+            <div className="w-10 h-10 shrink-0 sm:mx-auto bg-orange-100 rounded-full flex items-center justify-center sm:mb-2">
               <Flame className="h-5 w-5 text-orange-600" />
             </div>
-            {streakLoading ? <Skeleton className="h-6 w-12 mx-auto" /> : (
-              <p className="text-xl font-bold text-navy-900">{streakData?.streak || 0} days</p>
-            )}
-            <p className="text-xs text-muted-foreground font-medium uppercase mt-1">Savings Streak</p>
+            <div className="sm:contents">
+              {streakLoading ? <Skeleton className="h-6 w-12 sm:mx-auto" /> : (
+                <p className="text-lg sm:text-xl font-bold text-navy-900">{streakData?.streak || 0} days</p>
+              )}
+              <p className="text-xs text-muted-foreground font-medium uppercase sm:mt-1 ml-auto sm:ml-0">Savings Streak</p>
+            </div>
           </CardContent>
         </Card>
         <Card className="shadow-sm hover:shadow-md transition-shadow border-l-4 border-blue-500">
-          <CardContent className="p-5 text-center">
-            <div className="w-10 h-10 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-2">
+          <CardContent className="p-4 sm:p-5 flex items-center gap-4 sm:flex-col sm:text-center">
+            <div className="w-10 h-10 shrink-0 sm:mx-auto bg-blue-100 rounded-full flex items-center justify-center sm:mb-2">
               <Users className="h-5 w-5 text-blue-600" />
             </div>
-            {groupsLoading ? <Skeleton className="h-6 w-10 mx-auto" /> : (
-              <p className="text-xl font-bold text-navy-900">{groups?.length || 0}</p>
-            )}
-            <p className="text-xs text-muted-foreground font-medium uppercase mt-1">Active Groups</p>
+            <div className="sm:contents">
+              {groupsLoading ? <Skeleton className="h-6 w-10 sm:mx-auto" /> : (
+                <p className="text-lg sm:text-xl font-bold text-navy-900">{groups?.length || 0}</p>
+              )}
+              <p className="text-xs text-muted-foreground font-medium uppercase sm:mt-1 ml-auto sm:ml-0">Active Groups</p>
+            </div>
           </CardContent>
         </Card>
       </div>

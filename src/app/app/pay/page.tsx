@@ -94,12 +94,12 @@ export default function PayPage() {
     <div className="space-y-4">
       <h1 className="text-xl font-bold text-foreground">Pay Contributions</h1>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3">
         <Card className="bg-gradient-to-br from-gold-500 to-gold-600 text-navy-900 border-none">
-          <CardContent className="p-4">
-            <CircleDollarSign className="h-5 w-5 mb-2" />
-            <p className="text-xs opacity-80">Due Today</p>
-            <p className="text-xl font-bold">{formatCurrency(totalDue)}</p>
+          <CardContent className="p-3 sm:p-4">
+            <CircleDollarSign className="h-5 w-5 mb-1 sm:mb-2" />
+            <p className="text-[10px] sm:text-xs opacity-80">Due Today</p>
+            <p className="text-lg sm:text-xl font-bold">{formatCurrency(totalDue)}</p>
           </CardContent>
         </Card>
         <Card
@@ -109,10 +109,10 @@ export default function PayPage() {
               : ""
           }
         >
-          <CardContent className="p-4">
-            <AlertCircle className="h-5 w-5 mb-2" />
-            <p className="text-xs opacity-80">Arrears</p>
-            <p className="text-xl font-bold">{formatCurrency(totalArrears)}</p>
+          <CardContent className="p-3 sm:p-4">
+            <AlertCircle className="h-5 w-5 mb-1 sm:mb-2" />
+            <p className="text-[10px] sm:text-xs opacity-80">Arrears</p>
+            <p className="text-lg sm:text-xl font-bold">{formatCurrency(totalArrears)}</p>
           </CardContent>
         </Card>
       </div>
@@ -136,18 +136,18 @@ export default function PayPage() {
                 <motion.div
                   key={c.id}
                   layout
-                  className="flex items-center justify-between p-3 rounded-lg bg-muted/50 border border-border/50"
+                  className="flex items-center justify-between p-2.5 sm:p-3 rounded-lg bg-muted/50 border border-border/50 gap-2"
                 >
-                  <div>
-                    <p className="font-medium text-sm text-foreground">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-medium text-sm text-foreground truncate">
                       {c.groups?.name || c.group_name || "Group"}
                     </p>
                     <p className="text-xs text-muted-foreground">
                       {c.status === "overdue" ? "Overdue" : "Due today"}
                     </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <p className="font-bold text-foreground">
+                  <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                    <p className="font-bold text-sm text-foreground">
                       {formatCurrency(c.total_amount || c.amount)}
                     </p>
                     <AnimatePresence mode="wait">

@@ -55,29 +55,29 @@ export default function GroupDetailPage({ params }: { params: Promise<{ id: stri
 
       {/* Stats */}
       <Card className="bg-gradient-to-br from-navy-900 to-navy-800 text-white border-none">
-        <CardContent className="p-6">
-          <div className="grid grid-cols-2 gap-4">
+        <CardContent className="p-4 sm:p-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             <div>
-              <p className="text-gray-400 text-xs">Daily Amount</p>
-              <p className="text-2xl font-bold text-gold-400">{formatCurrency(group.daily_amount)}</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs">Daily Amount</p>
+              <p className="text-xl sm:text-2xl font-bold text-gold-400">{formatCurrency(group.daily_amount)}</p>
             </div>
             <div>
-              <p className="text-gray-400 text-xs">Payout</p>
-              <p className="text-2xl font-bold text-white">{formatCurrency(group.payout_amount)}</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs">Payout</p>
+              <p className="text-xl sm:text-2xl font-bold text-white">{formatCurrency(group.payout_amount)}</p>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-3 mt-4">
-            <div className="bg-white/10 rounded-lg p-2 text-center">
-              <Users className="h-4 w-4 mx-auto mb-1" />
-              <p className="text-xs">{group.member_count || 0}/{group.group_size}</p>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
+            <div className="bg-white/10 rounded-lg p-1.5 sm:p-2 text-center">
+              <Users className="h-3.5 sm:h-4 w-3.5 sm:w-4 mx-auto mb-1" />
+              <p className="text-[10px] sm:text-xs">{group.member_count || 0}/{group.group_size}</p>
             </div>
-            <div className="bg-white/10 rounded-lg p-2 text-center">
-              <Calendar className="h-4 w-4 mx-auto mb-1" />
-              <p className="text-xs">{group.days_per_turn}d/turn</p>
+            <div className="bg-white/10 rounded-lg p-1.5 sm:p-2 text-center">
+              <Calendar className="h-3.5 sm:h-4 w-3.5 sm:w-4 mx-auto mb-1" />
+              <p className="text-[10px] sm:text-xs">{group.days_per_turn}d/turn</p>
             </div>
-            <div className="bg-white/10 rounded-lg p-2 text-center">
-              <Clock className="h-4 w-4 mx-auto mb-1" />
-              <p className="text-xs">{group.grace_period_hours}h grace</p>
+            <div className="bg-white/10 rounded-lg p-1.5 sm:p-2 text-center">
+              <Clock className="h-3.5 sm:h-4 w-3.5 sm:w-4 mx-auto mb-1" />
+              <p className="text-[10px] sm:text-xs">{group.grace_period_hours}h grace</p>
             </div>
           </div>
         </CardContent>
@@ -108,21 +108,21 @@ export default function GroupDetailPage({ params }: { params: Promise<{ id: stri
           <Card>
             <CardContent className="p-4 space-y-3">
               {group.description && <p className="text-sm text-muted-foreground">{group.description}</p>}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2 text-sm">
-                  <Coins className="h-4 w-4 text-muted-foreground" />
+                  <Coins className="h-4 w-4 text-muted-foreground shrink-0" />
                   <span>Join Fee: {formatCurrency(group.join_fee)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <Clock className="h-4 w-4 text-muted-foreground" />
+                  <Clock className="h-4 w-4 text-muted-foreground shrink-0" />
                   <span>Late Fee: {formatCurrency(group.late_fee)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <Shield className="h-4 w-4 text-muted-foreground" />
+                  <Shield className="h-4 w-4 text-muted-foreground shrink-0" />
                   <span>Type: {group.type}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <Calendar className="h-4 w-4 text-muted-foreground" />
+                  <Calendar className="h-4 w-4 text-muted-foreground shrink-0" />
                   <span>Started: {group.start_date ? formatDate(group.start_date) : "TBD"}</span>
                 </div>
               </div>

@@ -47,27 +47,27 @@ export default function WalletPage() {
 
       {/* Balance Card */}
       <Card className="bg-gradient-to-br from-navy-900 to-navy-800 text-white border-none overflow-hidden relative">
-        <CardContent className="p-6 relative z-10">
+        <CardContent className="p-4 sm:p-6 relative z-10">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Wallet className="h-5 w-5 text-gold-400" />
-              <span className="text-sm text-gray-400">Available Balance</span>
+              <span className="text-xs sm:text-sm text-gray-400">Available Balance</span>
             </div>
             <TrendingUp className="h-4 w-4 text-green-400" />
           </div>
           {walletLoading ? (
             <Skeleton className="h-10 w-40 bg-navy-700" />
           ) : (
-            <p className="text-4xl font-bold text-gold-400 mb-4">{formatCurrency(wallet?.balance || 0)}</p>
+            <p className="text-3xl sm:text-4xl font-bold text-gold-400 mb-4">{formatCurrency(wallet?.balance || 0)}</p>
           )}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white/10 rounded-lg p-2 text-center">
-              <p className="text-xs text-gray-400">Total In</p>
-              <p className="font-semibold text-sm">{formatCurrency(wallet?.total_deposited || 0)}</p>
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
+            <div className="bg-white/10 rounded-lg p-2 sm:p-3 text-center">
+              <p className="text-[10px] sm:text-xs text-gray-400">Total In</p>
+              <p className="font-semibold text-xs sm:text-sm">{formatCurrency(wallet?.total_deposited || 0)}</p>
             </div>
-            <div className="bg-white/10 rounded-lg p-2 text-center">
-              <p className="text-xs text-gray-400">Total Out</p>
-              <p className="font-semibold text-sm">{formatCurrency(wallet?.total_withdrawn || 0)}</p>
+            <div className="bg-white/10 rounded-lg p-2 sm:p-3 text-center">
+              <p className="text-[10px] sm:text-xs text-gray-400">Total Out</p>
+              <p className="font-semibold text-xs sm:text-sm">{formatCurrency(wallet?.total_withdrawn || 0)}</p>
             </div>
           </div>
         </CardContent>

@@ -34,18 +34,18 @@ function GroupCard({ group }: { group: SusuGroup }) {
             </div>
             <Badge className={statusConfig.color}>{statusConfig.label}</Badge>
           </div>
-          <div className="grid grid-cols-3 gap-2 text-center">
-            <div className="bg-muted/50 rounded-lg p-2">
-              <p className="text-xs text-muted-foreground">Daily</p>
-              <p className="font-bold text-sm text-foreground">{formatCurrency(group.daily_amount)}</p>
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
+            <div className="bg-muted/50 rounded-lg p-1.5 sm:p-2">
+              <p className="text-[10px] sm:text-xs text-muted-foreground">Daily</p>
+              <p className="font-bold text-xs sm:text-sm text-foreground">{formatCurrency(group.daily_amount)}</p>
             </div>
-            <div className="bg-muted/50 rounded-lg p-2">
-              <p className="text-xs text-muted-foreground">Payout</p>
-              <p className="font-bold text-sm text-foreground">{formatCurrency(group.payout_amount)}</p>
+            <div className="bg-muted/50 rounded-lg p-1.5 sm:p-2">
+              <p className="text-[10px] sm:text-xs text-muted-foreground">Payout</p>
+              <p className="font-bold text-xs sm:text-sm text-foreground">{formatCurrency(group.payout_amount)}</p>
             </div>
-            <div className="bg-muted/50 rounded-lg p-2">
-              <p className="text-xs text-muted-foreground">Spots</p>
-              <p className="font-bold text-sm text-foreground">{group.spots_left ?? (group.group_size - (group.member_count || 0))}</p>
+            <div className="bg-muted/50 rounded-lg p-1.5 sm:p-2">
+              <p className="text-[10px] sm:text-xs text-muted-foreground">Spots</p>
+              <p className="font-bold text-xs sm:text-sm text-foreground">{group.spots_left ?? (group.group_size - (group.member_count || 0))}</p>
             </div>
           </div>
           <div className="flex items-center justify-end mt-3 text-xs text-gold-600">
@@ -85,7 +85,7 @@ function CreateGroupSheet() {
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <Input label="Group Name" placeholder="e.g. Market Women Susu" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
           <Input label="Description" placeholder="Brief description" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Input label="Daily Amount (GHS)" type="number" placeholder="20" value={form.daily_amount} onChange={(e) => setForm({ ...form, daily_amount: e.target.value })} required />
             <Input label="Group Size" type="number" placeholder="30" value={form.group_size} onChange={(e) => setForm({ ...form, group_size: e.target.value })} required />
           </div>
