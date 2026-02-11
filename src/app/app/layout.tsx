@@ -169,7 +169,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <header className="md:hidden fixed top-0 inset-x-0 z-50 bg-card border-b border-border">
         <div className="px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Avatar name={user.name} src={user.profilePhoto} size="sm" />
+            <button onClick={() => setMobileOpen(true)} className="p-1.5 -ml-1.5 rounded-lg hover:bg-muted transition-colors">
+              <Menu className="h-5 w-5 text-foreground" />
+            </button>
             <div>
               <p className="text-sm font-semibold text-foreground leading-none">Hi, {user.name.split(" ")[0]}</p>
               <p className="text-xs text-muted-foreground">Welcome back</p>
@@ -192,6 +194,82 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </header>
+
+      {/* ─── MOBILE SIDEBAR DRAWER ─── */}
+      {mobileOpen && (
+        <>
+          <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setMobileOpen(false)} />
+          <motion.aside
+            initial={{ x: -280 }}
+            animate={{ x: 0 }}
+            exit={{ x: -280 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed inset-y-0 left-0 w-72 bg-card border-r border-border z-50 md:hidden flex flex-col"
+          >
+            {/* Drawer header */}
+            <div className="p-4 border-b border-border">
+              <Link href="/app/dashboard" onClick={() => setMobileOpen(false)} className="inline-block">
+                <Image src="/logo.png" alt="JuliSmart Susu" width={120} height={40} className="h-8 w-auto" />
+              </Link>
+            </div>
+
+            {/* User info */}
+            <div className="px-4 py-4 border-b border-border">
+              <div className="flex items-center gap-3">
+                <Avatar name={user.name} src={user.profilePhoto} size="sm" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-foreground truncate">{user.name}</p>
+                  <p className="text-xs text-muted-foreground truncate">{user.email || user.phone}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Nav links */}
+            <nav className="flex-1 p-2 space-y-1 overflow-y-auto">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href || (item.href !== "/app/dashboard" && pathname.startsWith(item.href));
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                      isActive
+                        ? "bg-gold-100 text-gold-700 dark:bg-gold-900/20 dark:text-gold-400"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    )}
+                  >
+                    <item.icon className="h-4 w-4 shrink-0" />
+                    <span>{item.label}</span>
+                    {item.label === "Notifications" && (
+                      <span className="ml-auto w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Drawer footer */}
+            <div className="p-2 border-t border-border space-y-1">
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+              </button>
+              <button
+                onClick={() => { setMobileOpen(false); handleLogout(); }}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-destructive hover:bg-destructive/10 transition-colors"
+              >
+                <LogOut className="h-4 w-4" />
+                <span>Sign Out</span>
+              </button>
+            </div>
+          </motion.aside>
+        </>
+      )}
 
       {/* ─── MAIN CONTENT ─── */}
       <main className={cn(
@@ -222,7 +300,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Page Content */}
-        <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto pb-24 md:pb-8">
+        <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto pb-8">
           <AnimatePresence mode="wait">
             <motion.div
               key={pathname}
@@ -237,7 +315,19 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
       </main>
 
-      {/* ─── MOBILE BOTTOM NAV ─── */}
+      {/*
+        ─── PWA MOBILE BOTTOM NAV (COMMENTED OUT) ───
+        TODO: Uncomment this section when converting to PWA.
+        This bottom tab bar (Home, Groups, Pay, Wallet, Profile) provides native-app-like
+        navigation ideal for a PWA experience. It was removed in favor of the hamburger
+        sidebar drawer for the standard responsive web version.
+
+        When re-enabling for PWA:
+        1. Uncomment the <nav> block below
+        2. Optionally hide the hamburger button in the mobile header
+        3. Reduce the sidebar to only show secondary items (Notifications, Settings, Logout)
+        4. Adjust the main content padding-bottom back to pb-24
+
       <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-card/95 backdrop-blur-sm border-t border-border safe-area-pb">
         <div className="flex items-center justify-around h-16 px-2">
           {mobileNavItems.map((item) => {
@@ -258,6 +348,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           })}
         </div>
       </nav>
+      */}
     </div>
   );
 }
