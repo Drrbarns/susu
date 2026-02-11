@@ -473,22 +473,22 @@ export default function HomePage() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="py-24 bg-navy-950 text-white">
+      <section className="py-24 bg-gradient-to-br from-gold-500 to-gold-600 text-navy-950">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 tracking-tight">
             Ready to start saving?
           </h2>
-          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-navy-900/70 mb-10 max-w-2xl mx-auto leading-relaxed">
             Join thousands of Ghanaians already building their financial future with Juli Smart Susu. It&apos;s free, safe, and takes less than a minute.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/signup">
-              <Button className="bg-white text-navy-950 hover:bg-gray-100 rounded-full px-8 h-14 text-lg font-bold w-full sm:w-auto">
+              <Button className="bg-navy-900 text-white hover:bg-navy-800 rounded-full px-8 h-14 text-lg font-bold w-full sm:w-auto shadow-lg shadow-navy-900/20">
                 Create Free Account
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="outline" className="border-gray-700 text-white hover:bg-navy-900 hover:text-white rounded-full px-8 h-14 text-lg font-medium w-full sm:w-auto">
+              <Button variant="outline" className="border-navy-900/30 text-navy-900 hover:bg-navy-900/10 rounded-full px-8 h-14 text-lg font-medium w-full sm:w-auto">
                 Talk to Us
               </Button>
             </Link>
