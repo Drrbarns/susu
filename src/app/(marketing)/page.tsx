@@ -219,44 +219,53 @@ export default function HomePage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Decorative background blob */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold-50/50 rounded-full blur-3xl -z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center max-w-2xl mx-auto mb-20">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-50 border border-navy-100 text-xs font-semibold text-navy-900 mb-4">
+              <span className="w-2 h-2 rounded-full bg-navy-900" />
+              Simple Process
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 mb-4">
-              Start saving in under 2 minutes
+              Start saving in 4 simple steps
             </h2>
             <p className="text-lg text-gray-600">
-              No paperwork. No bank queues. Just your phone.
+              We&apos;ve stripped away the complexity. No paperwork, no queues, just secure savings.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-            {/* Connector Line (Desktop) */}
-            <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-gray-100 -z-10" />
-            
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((s, i) => (
               <motion.div
                 key={s.num}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-                className="text-center bg-white"
+                transition={{ delay: i * 0.1 }}
+                className="group relative p-8 rounded-3xl bg-white border border-gray-100 hover:border-gold-200 shadow-sm hover:shadow-xl hover:shadow-gold-900/5 transition-all duration-300"
               >
-                <div className="w-24 h-24 rounded-full bg-white border-4 border-stone-100 flex items-center justify-center mx-auto mb-6 shadow-sm relative z-10">
-                  <s.icon className="h-8 w-8 text-navy-900" />
+                {/* Large Watermark Number */}
+                <div className="absolute -top-4 -right-2 text-8xl font-black text-gray-50 group-hover:text-gold-50/80 transition-colors select-none -z-10">
+                  {s.num}
                 </div>
-                <div className="text-xs font-bold text-gold-600 mb-2 tracking-widest uppercase">Step {s.num}</div>
-                <h3 className="text-lg font-bold text-navy-950 mb-2">{s.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed px-4">{s.desc}</p>
+
+                <div className="w-14 h-14 rounded-2xl bg-navy-900 flex items-center justify-center text-white mb-6 shadow-lg shadow-navy-900/20 group-hover:scale-110 transition-transform duration-300">
+                  <s.icon className="h-6 w-6" />
+                </div>
+                
+                <h3 className="text-xl font-bold text-navy-950 mb-3">{s.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>
 
           <div className="text-center mt-16">
             <Link href="/signup">
-              <Button className="bg-navy-900 text-white hover:bg-navy-800 rounded-full px-8 h-12 text-base font-semibold shadow-lg shadow-navy-900/5">
-                Get Started Now <ArrowRight className="h-4 w-4 ml-2" />
+              <Button className="bg-navy-900 text-white hover:bg-navy-800 rounded-full px-10 h-14 text-lg font-bold shadow-xl shadow-navy-900/10 hover:shadow-navy-900/20 transition-all">
+                Get Started Now <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
             </Link>
           </div>
