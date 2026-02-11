@@ -110,18 +110,28 @@ export default function HomePage() {
 
       {/* ── SOCIAL PROOF BAR ── */}
       <section className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 text-center md:divide-x divide-gray-200">
             {[
-              { value: "15,000+", label: "Active Savers" },
-              { value: "GHS 25M+", label: "Total Saved" },
-              { value: "99.9%", label: "Payout Rate" },
-              { value: "4.9/5", label: "User Rating" },
-            ].map((stat) => (
-              <div key={stat.label} className="px-4">
-                <div className="text-3xl font-bold text-navy-950 mb-1">{stat.value}</div>
-                <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">{stat.label}</div>
-              </div>
+              { value: "15,000+", label: "Active Savers", icon: Users },
+              { value: "GHS 25M+", label: "Total Saved", icon: Wallet },
+              { value: "99.9%", label: "Payout Rate", icon: TrendingUp },
+              { value: "4.9/5", label: "User Rating", icon: Star },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="px-4 group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-gold-50 flex items-center justify-center mx-auto mb-3 group-hover:bg-gold-100 group-hover:scale-110 transition-all duration-300">
+                  <stat.icon className="h-5 w-5 text-gold-600" />
+                </div>
+                <div className="text-3xl sm:text-4xl font-bold text-navy-950 mb-1">{stat.value}</div>
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-widest">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
         </div>
