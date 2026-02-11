@@ -14,31 +14,28 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border/50 bg-white/80 dark:bg-navy-950/80 backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shadow-sm">
-              <span className="text-navy-900 font-bold text-sm">JS</span>
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center transition-transform group-hover:scale-105">
+              <span className="text-white font-bold text-sm">JS</span>
             </div>
-            <div>
-              <span className="font-bold text-navy-900 dark:text-white text-lg leading-none">Juli</span>
-              <span className="text-gold-500 font-bold text-lg"> Susu</span>
-            </div>
+            <span className="font-bold text-gray-900 text-xl tracking-tight">Juli<span className="text-gold-600">Susu</span></span>
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-lg transition-colors",
+                  "text-sm font-medium transition-colors hover:text-gold-600",
                   pathname === link.href
-                    ? "text-gold-600 bg-gold-50 dark:bg-gold-900/20"
-                    : "text-gray-600 dark:text-gray-300 hover:text-navy-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-navy-800"
+                    ? "text-gray-900 font-semibold"
+                    : "text-gray-500"
                 )}
               >
                 {link.label}
@@ -47,21 +44,23 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/login">
-              <Button variant="ghost" size="sm">Sign In</Button>
+          <div className="hidden md:flex items-center gap-6">
+            <Link href="/login" className="text-sm font-semibold text-gray-900 hover:text-gold-600 transition-colors">
+              Log in
             </Link>
             <Link href="/signup">
-              <Button variant="gold" size="sm">Get Started</Button>
+              <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-6 font-semibold shadow-none h-10">
+                Get Started
+              </Button>
             </Link>
           </div>
 
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-navy-800 transition-colors"
+            className="md:hidden p-2 text-gray-600 hover:text-black transition-colors"
           >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
@@ -73,30 +72,30 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-border/50 bg-white dark:bg-navy-950 overflow-hidden"
+            className="md:hidden border-t border-gray-100 bg-white overflow-hidden"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="px-4 py-6 space-y-4">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    "block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                    "block text-lg font-medium transition-colors",
                     pathname === link.href
-                      ? "text-gold-600 bg-gold-50 dark:bg-gold-900/20"
-                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-navy-800"
+                      ? "text-black"
+                      : "text-gray-500"
                   )}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-4 flex gap-3">
-                <Link href="/login" className="flex-1" onClick={() => setMobileOpen(false)}>
-                  <Button variant="outline" className="w-full">Sign In</Button>
+              <div className="pt-6 flex flex-col gap-3">
+                <Link href="/login" onClick={() => setMobileOpen(false)}>
+                  <Button variant="outline" className="w-full rounded-full border-gray-200 h-12 text-base">Log in</Button>
                 </Link>
-                <Link href="/signup" className="flex-1" onClick={() => setMobileOpen(false)}>
-                  <Button variant="gold" className="w-full">Get Started</Button>
+                <Link href="/signup" onClick={() => setMobileOpen(false)}>
+                  <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-full h-12 text-base">Get Started</Button>
                 </Link>
               </div>
             </div>
