@@ -20,6 +20,19 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ pat
   const slug = path.join("-");
   const functionName = `auth-${slug}`;
 
+  // Handle logout immediately (no body needed)
+  if (slug === "logout") {
+    const cookieStore = await cookies();
+    const token = cookieStore.get(COOKIE_NAME)?.value;
+    // Best-effort call to edge function to invalidate server-side session
+    if (token) {
+      await callEdgeFunction(functionName, { method: "POST", body: {}, token }).catch(() => {});
+    }
+    const response = NextResponse.json({ success: true });
+    response.cookies.delete(COOKIE_NAME);
+    return response;
+  }
+
   // Rate limiting for sensitive endpoints
   const limitConfig = RATE_LIMITS[slug];
   if (limitConfig) {
@@ -73,13 +86,6 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ pat
       path: "/",
       maxAge: 7 * 24 * 60 * 60, // 7 days
     });
-    return response;
-  }
-
-  // For logout, clear the cookie
-  if (slug === "logout") {
-    const response = NextResponse.json({ success: true });
-    response.cookies.delete(COOKIE_NAME);
     return response;
   }
 
