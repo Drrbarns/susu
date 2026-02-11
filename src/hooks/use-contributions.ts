@@ -4,11 +4,31 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "@/lib/api-client";
 import type { ContributionSchedule, Contribution } from "@/types";
 
+interface DueContributionsResponse {
+  contributions: ContributionSchedule[];
+  due_today: ContributionSchedule[];
+  overdue: ContributionSchedule[];
+  total_due_today: number;
+  total_overdue: number;
+  total_due: number;
+  count: number;
+  count_today: number;
+  count_overdue: number;
+}
+
 export function useDueContributions() {
   return useQuery({
     queryKey: ["contributions-due"],
-    queryFn: () => api.get<{ contributions: ContributionSchedule[] }>("/contributions/due-today"),
+    queryFn: () => api.get<DueContributionsResponse>("/contributions/due-today"),
     select: (data) => data.contributions,
+  });
+}
+
+/** Returns full breakdown: today's dues, overdue, totals */
+export function useDueBreakdown() {
+  return useQuery({
+    queryKey: ["contributions-due"],
+    queryFn: () => api.get<DueContributionsResponse>("/contributions/due-today"),
   });
 }
 

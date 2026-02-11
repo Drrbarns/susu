@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Flame, TrendingUp, Wallet, Users, ChevronRight, CircleDollarSign, ArrowRight } from "lucide-react";
+import { Flame, TrendingUp, Wallet, Users, ChevronRight, CircleDollarSign, ArrowRight, AlertTriangle, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/hooks/use-auth";
-import { useDueContributions, useContributionStreak } from "@/hooks/use-contributions";
+import { useDueContributions, useDueBreakdown, useContributionStreak } from "@/hooks/use-contributions";
 import { useWallet } from "@/hooks/use-wallet";
 import { useGroups } from "@/hooks/use-groups";
 import { formatCurrency } from "@/lib/utils";
@@ -48,11 +48,16 @@ function SavingsRing({ progress, total }: { progress: number; total: number }) {
 export default function DashboardPage() {
   const { user } = useAuth();
   const { data: dueContributions, isLoading: dueLoading } = useDueContributions();
+  const { data: dueBreakdown, isLoading: breakdownLoading } = useDueBreakdown();
   const { data: streakData, isLoading: streakLoading } = useContributionStreak();
   const { data: wallet, isLoading: walletLoading } = useWallet();
   const { data: groups, isLoading: groupsLoading } = useGroups();
 
-  const totalDue = dueContributions?.reduce((sum, c) => sum + c.amount, 0) || 0;
+  const totalDue = dueBreakdown?.total_due || dueContributions?.reduce((sum, c) => sum + c.amount, 0) || 0;
+  const totalDueToday = dueBreakdown?.total_due_today || 0;
+  const totalOverdue = dueBreakdown?.total_overdue || 0;
+  const overdueCount = dueBreakdown?.count_overdue || 0;
+  const todayCount = dueBreakdown?.count_today || 0;
   const dueCount = dueContributions?.length || 0;
 
   return (
@@ -89,6 +94,61 @@ export default function DashboardPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Amount Due Today - prominent card */}
+      {breakdownLoading ? (
+        <Skeleton className="h-24 w-full rounded-xl" />
+      ) : totalDue > 0 ? (
+        <Card className={`relative overflow-hidden border-none shadow-lg ${totalOverdue > 0 ? 'bg-gradient-to-r from-red-600 to-red-500' : 'bg-gradient-to-r from-gold-500 to-gold-600'} text-white`}>
+          <CardContent className="p-4 sm:p-5">
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  {totalOverdue > 0 ? (
+                    <AlertTriangle className="h-4 w-4" />
+                  ) : (
+                    <Clock className="h-4 w-4" />
+                  )}
+                  <p className="text-sm font-medium opacity-90">
+                    {totalOverdue > 0 ? 'Payment Due (Includes Overdue)' : "Today's Payment"}
+                  </p>
+                </div>
+                <p className="text-2xl sm:text-3xl font-bold tracking-tight">
+                  {formatCurrency(totalDue)}
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-2 text-xs opacity-80">
+                  {todayCount > 0 && (
+                    <span>Today: {formatCurrency(totalDueToday)} ({todayCount} {todayCount === 1 ? 'group' : 'groups'})</span>
+                  )}
+                  {overdueCount > 0 && (
+                    <span className="font-semibold">Overdue: {formatCurrency(totalOverdue)} ({overdueCount} missed)</span>
+                  )}
+                </div>
+              </div>
+              <Link href="/app/pay">
+                <Button size="sm" className={`shrink-0 ${totalOverdue > 0 ? 'bg-white text-red-600 hover:bg-white/90' : 'bg-navy-900 text-gold-400 hover:bg-navy-800'}`}>
+                  Pay Now
+                  <ArrowRight className="h-3 w-3 ml-1" />
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card className="relative overflow-hidden border border-green-200 dark:border-green-800/50 bg-green-50 dark:bg-green-900/10 shadow-sm">
+          <CardContent className="p-4 sm:p-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                <CircleDollarSign className="h-5 w-5 text-green-600" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-green-800 dark:text-green-400">You&apos;re all caught up!</p>
+                <p className="text-xs text-green-600 dark:text-green-500">No payments due today</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
