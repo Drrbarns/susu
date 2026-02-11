@@ -101,8 +101,9 @@ export default function AdminGroupDetailPage() {
         toast.success("Group Deleted", `"${group.name}" has been deleted.`);
         router.push("/admin/groups");
       },
-      onError: (err: { error?: string }) => {
-        toast.error("Error", err.error || "Failed to delete group");
+      onError: (err: Error) => {
+        const msg = (err as Error & { error?: string }).error ?? err.message ?? "Failed to delete group";
+        toast.error("Error", msg);
       },
     });
   };
