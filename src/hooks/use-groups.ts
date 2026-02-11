@@ -15,8 +15,8 @@ export function useGroups(params?: Record<string, string>) {
 export function useGroupDetail(id: string) {
   return useQuery({
     queryKey: ["group", id],
-    queryFn: () => api.get<{ group: SusuGroup }>(`/groups/detail`, { group_id: id }),
-    select: (data) => data.group,
+    queryFn: () => api.get<{ data?: SusuGroup; group?: SusuGroup }>(`/groups/detail`, { groupId: id }),
+    select: (data) => data.data || data.group,
     enabled: !!id,
   });
 }
@@ -54,6 +54,16 @@ export function useCreateGroup() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (data: Record<string, unknown>) => api.post("/groups/create", data),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["groups"] });
+    },
+  });
+}
+
+export function useDeleteGroup() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (groupId: string) => api.post("/admin/group-delete", { group_id: groupId }),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["groups"] });
     },
