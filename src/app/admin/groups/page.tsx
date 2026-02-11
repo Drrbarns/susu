@@ -25,7 +25,7 @@ import { createGroupSchema } from "@/lib/validations";
 
 export default function AdminGroupsPage() {
   const [search, setSearch] = useState("");
-  const { data: groups, isLoading } = useGroups();
+  const { data: groups, isLoading } = useGroups({ status: "all" });
   const [open, setOpen] = useState(false);
 
   const filtered = groups?.filter((g) =>

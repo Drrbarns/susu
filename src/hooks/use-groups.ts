@@ -7,8 +7,8 @@ import type { SusuGroup } from "@/types";
 export function useGroups(params?: Record<string, string>) {
   return useQuery({
     queryKey: ["groups", params],
-    queryFn: () => api.get<{ groups: SusuGroup[] }>("/groups/list", params),
-    select: (data) => data.groups,
+    queryFn: () => api.get<{ data?: SusuGroup[]; groups?: SusuGroup[] }>("/groups/list", params),
+    select: (data) => data.data || data.groups || [],
   });
 }
 
